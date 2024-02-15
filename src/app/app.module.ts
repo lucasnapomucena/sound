@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   LucideAngularModule,
@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/layout/layout.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,12 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     LayoutComponent,
     RouterModule.forRoot(routes),
     StoreModule.forRoot({}, {}),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: isDevMode()
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
