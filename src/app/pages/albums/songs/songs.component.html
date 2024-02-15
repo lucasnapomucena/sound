@@ -1,0 +1,32 @@
+<div class="flex flex-col">
+  <div class="flex w-full gap-10">
+    <div class="flex gap-6 flex-col max-w-80">
+      <div class="overflow-hidden rounded-full max-w-80 max-h-80 h-full w-full">
+        <img [src]="$album?.images" [alt]="$album?.title" />
+      </div>
+
+      <div class="flex items-center justify-center gap-6 flex-col">
+        <p class="text-4xl font-medium text-center">{{$album?.title}}</p>
+
+        <p class="">{{$album?.description}}</p>
+      </div>
+    </div>
+
+    <div class="flex gap-8 flex-1">
+      <div class="bg-white min-w-80 w-full">
+        <div class="mb-4">
+          <p class="text-xl font-medium">Songs</p>
+
+          <p>valor {{totalLength}}</p>
+        </div>
+        <div class="bg-white min-w-80 w-full border">
+          <div class="mx-auto">
+            @for (song of $album?.songs; track song.title) {
+            <app-songs-list [song]="song"></app-songs-list>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

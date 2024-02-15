@@ -1,0 +1,7 @@
+aside {
+  nav {
+    a.active {
+      @apply bg-gray-100;
+    }
+  }
+}

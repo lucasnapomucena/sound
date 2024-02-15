@@ -6,13 +6,7 @@
       [alt]="album.title"
       style="aspect-ratio: 1/1" />
     <div
-      class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-20 flex items-center justify-center gap-2">
-      <button class="p-2 bg-white rounded-full">
-        <lucide-icon
-          name="play"
-          class="flex justify-center items-center"
-          strokeWidth="1"></lucide-icon>
-      </button>
+      class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-20 flex items-center justify-center">
       <button class="p-2 bg-white rounded-full">
         <lucide-icon
           name="heart-icon"
@@ -22,6 +16,10 @@
     </div>
   </div>
   <div class="mt-4">
-    <h2 class="text-xl font-bold text-center">{{ album.title }}</h2>
+    <p class="text-xl font-bold text-center">
+      <a [routerLink]="['../albums/', album.title]" title=""
+        >{{ album.title }}</a
+      >
+    </p>
   </div>
 </div>

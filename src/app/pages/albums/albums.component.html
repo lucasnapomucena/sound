@@ -4,8 +4,6 @@
   <div class="flex gap-8 flex-wrap">
     @for (album of $albums; track album.title) {
     <app-album-list [album]="album"></app-album-list>
-    } @empty {
-    <div>There are no items.</div>
     }
   </div>
 </div>

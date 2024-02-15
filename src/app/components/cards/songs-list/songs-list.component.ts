@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Song } from '../../models/artist';
+import { Song } from '../../../models/artist';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
@@ -11,5 +11,4 @@ import { LucideAngularModule } from 'lucide-angular';
 })
 export class SongsListComponent {
   @Input() song!: Song;
-  $active: boolean = false;
 }
