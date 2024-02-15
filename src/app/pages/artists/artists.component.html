@@ -1,0 +1,11 @@
+<div class="flex flex-col">
+  <h1 class="font-medium text-2xl mb-6">Artists</h1>
+
+  <div class="flex gap-8">
+    @for (artist of $artists; track artist.name) {
+    <app-artist-list [artist]="artist"></app-artist-list>
+    } @empty {
+    <div>There are no items.</div>
+    }
+  </div>
+</div>

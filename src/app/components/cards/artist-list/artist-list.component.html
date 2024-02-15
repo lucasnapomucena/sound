@@ -1,1 +1,6 @@
-<p>artist-list works!</p>
+<div class="flex flex-col space-x-4 p-2">
+  <img [src]="artist.image" class="max-w-64 rounded-full" [alt]="artist.name" />
+  <div class="mt-4">
+    <h2 class="text-xl font-bold text-center">{{ artist.name }}</h2>
+  </div>
+</div>

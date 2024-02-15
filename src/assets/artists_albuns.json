@@ -1,11 +1,11 @@
 [
   {
     "name": "The Weeknd",
-    "image": "./assets/the-weeknd.png",
+    "image": "./assets/images/the-weeknd.png",
     "albums": [
       {
         "title": "Dawn FM",
-        "images": "./assets/dawn-fm.png",
+        "images": "./assets/images/dawn-fm.png",
         "songs": [
           {
             "title": "Dawn FM",
@@ -78,11 +78,11 @@
   },
   {
     "name": "Radiohead",
-    "image": "./assets/radiohead.png",
+    "image": "./assets/images/radiohead.png",
     "albums": [
       {
         "title": "The King of Limbs",
-        "images": "./assets/the-king-of-limbs.png",
+        "images": "./assets/images/the-king-of-limbs.png",
         "songs": [
           {
             "title": "Bloom",
@@ -121,7 +121,7 @@
       },
       {
         "title": "OK Computer",
-        "images": "./assets/ok-computer-radiohead.png",
+        "images": "./assets/images/ok-computer-radiohead.png",
         "songs": [
           {
             "title": "Airbag",
@@ -178,11 +178,11 @@
   },
   {
     "name": "Portishead",
-    "image": "./assets/portishead.png",
+    "image": "./assets/images/portishead.png",
     "albums": [
       {
         "title": "Dummy",
-        "images": "./assets/portishead-dummy.png",
+        "images": "./assets/images/portishead-dummy.png",
         "songs": [
           {
             "title": "Mysterons",
@@ -233,7 +233,7 @@
       },
       {
         "title": "Third",
-        "images": "./assets/third-portishead.png",
+        "images": "./assets/images/third-portishead.png",
         "songs": [
           {
             "title": "Silence",

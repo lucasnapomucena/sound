@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Artist } from '../../../models/artist';
 
 @Component({
   selector: 'app-artist-list',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './artist-list.component.scss'
 })
 export class ArtistListComponent {
-
+  @Input() artist!: Artist;
 }
