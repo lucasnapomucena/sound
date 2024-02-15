@@ -12,7 +12,7 @@ import { AlbumListComponent } from '../../components/cards/album-list/album-list
   styleUrl: './albums.component.scss'
 })
 export class AlbumsComponent implements OnInit {
-  $albums!: Album[];
+  $albums: Album[] = [];
 
   constructor(private artistsService: ArtistService) {}
 
