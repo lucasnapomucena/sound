@@ -1,7 +1,9 @@
-<div class="flex">
+<div class="flex w-full">
   <app-sidebar> </app-sidebar>
   <main>
     <app-header></app-header>
-    <ng-content></ng-content>
+    <div class="px-8 py-6">
+      <ng-content></ng-content>
+    </div>
   </main>
 </div>

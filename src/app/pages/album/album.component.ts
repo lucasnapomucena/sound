@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './album.component.html',
   styleUrl: './album.component.scss'
 })
-export class AlbumComponent {
-
-}
+export class AlbumComponent {}
