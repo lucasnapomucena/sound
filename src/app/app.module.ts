@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LucideAngularModule, Home, HeartIcon, Search } from 'lucide-angular';
+import {
+  LucideAngularModule,
+  Home,
+  HeartIcon,
+  Search,
+  Bell
+} from 'lucide-angular';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
@@ -12,7 +18,7 @@ import { LayoutComponent } from './components/layout/layout.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    LucideAngularModule.pick({ Home, HeartIcon, Search }),
+    LucideAngularModule.pick({ Home, HeartIcon, Search, Bell }),
     LayoutComponent,
     RouterModule.forRoot(routes)
   ],

@@ -2,7 +2,6 @@
   {
     "name": "The Weeknd",
     "image": "./assets/the-weeknd.png",
-
     "albums": [
       {
         "title": "Dawn FM",

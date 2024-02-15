@@ -1,4 +1,4 @@
-<div class="flex gap-4 w-full py-6 px-8 border-b">
+<div class="flex gap-4 w-full py-4 px-8 border-b justify-between items-center">
   <div class="w-96 relative">
     <button
       class="absolute left-2 top-0 mt-2 mr-3 focus:outline-none"
@@ -10,5 +10,30 @@
       class="bg-white w-full px-10 py-2 border border-gray-300 rounded-lg transition-all duration-300"
       placeholder="Search..."
       id="searchInput" />
+  </div>
+
+  <div class="flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center">
+        <button>
+          <lucide-icon
+            name="heart-icon"
+            strokeWidth="1"
+            [size]="24"
+            class="flex items-center"></lucide-icon>
+        </button>
+      </div>
+
+      <div class="flex items-center">
+        <button>
+          <lucide-icon
+            name="bell"
+            strokeWidth="1"
+            [size]="24"
+            class="flex items-center"></lucide-icon>
+        </button>
+      </div>
+      <div class="h-8 w-8 rounded-full bg-gray-400"></div>
+    </div>
   </div>
 </div>
