@@ -6,7 +6,8 @@ import {
   HeartIcon,
   Search,
   Bell,
-  Play
+  Play,
+  DiscAlbum
 } from 'lucide-angular';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
@@ -19,7 +20,14 @@ import { LayoutComponent } from './components/layout/layout.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    LucideAngularModule.pick({ Home, HeartIcon, Search, Bell, Play }),
+    LucideAngularModule.pick({
+      Home,
+      HeartIcon,
+      Search,
+      Bell,
+      Play,
+      DiscAlbum
+    }),
     LayoutComponent,
     RouterModule.forRoot(routes)
   ],
