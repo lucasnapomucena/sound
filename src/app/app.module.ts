@@ -14,6 +14,8 @@ import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/layout/layout.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,9 @@ import { LayoutComponent } from './components/layout/layout.component';
       DiscAlbum
     }),
     LayoutComponent,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({}, {}),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
