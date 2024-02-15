@@ -5,4 +5,10 @@
   width: 100%;
   display: flex;
   z-index: 49;
+  height: 74.4px;
+}
+
+.search:has(input:focus) {
+  max-width: 400px;
+  width: 100%;
 }
