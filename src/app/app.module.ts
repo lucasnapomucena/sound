@@ -17,6 +17,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { favoritesReducer } from './store/favorites/reducers/favorites.reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,15 +32,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       Play,
       DiscAlbum
     }),
-    LayoutComponent,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ favorites: favoritesReducer }),
     StoreRouterConnectingModule.forRoot(),
-    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: isDevMode()
-    })
+    }),
+    LayoutComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,10 @@
 <div class="flex flex-col">
   <h1 class="font-medium text-2xl mb-6">Album@if($albums.length > 1){s}</h1>
-
   <div class="flex gap-8 flex-wrap">
     @for (album of $albums; track album.title) {
-    <app-album-list [album]="album"></app-album-list>
+    <app-album-list
+      [album]="album"
+      [addToFavorites]="onAddToFavoritesAlbum"></app-album-list>
     }
   </div>
 </div>
