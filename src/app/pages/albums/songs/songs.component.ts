@@ -46,7 +46,7 @@ export class SongsComponent implements OnInit {
       )
       .subscribe(({ album, totalLength }) => {
         this.$album = album || null;
-        this.totalLength = totalLength.toString().replace('.', ':');
+        this.totalLength = totalLength.toFixed(2).toString().replace('.', ':');
       });
   }
 }
