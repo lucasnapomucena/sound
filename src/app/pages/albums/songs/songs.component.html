@@ -5,22 +5,31 @@
         <img [src]="$album?.images" [alt]="$album?.title" />
       </div>
 
-      <div class="flex items-center justify-center gap-6 flex-col">
+      <div class="flex flex-col">
         <p class="text-4xl font-medium text-center">{{$album?.title}}</p>
+        <div class="mt-8">
+          <p class="text-sm font-bold">Album Description:</p>
+          <p class="text-xs">{{$album?.description}}</p>
+        </div>
+        <div class="mt-2 flex items-center gap-1">
+          <p class="text-sm font-bold">Number of songs:</p>
+          <p class="text-xs">{{$album?.songs?.length}}</p>
+        </div>
 
-        <p class="">{{$album?.description}}</p>
+        <div class="mt-2 flex items-center gap-1">
+          <p class="text-sm font-bold">Minutes:</p>
+          <p class="text-xs">{{totalLength}}</p>
+        </div>
       </div>
     </div>
 
     <div class="flex gap-8 flex-1">
       <div class="bg-white min-w-80 w-full">
-        <div class="flex justify-between items-center mb-4">
+        <div class="mb-4">
           <p class="text-xl font-medium">Songs</p>
-
-          <p>{{totalLength}}</p>
         </div>
         <div class="bg-white min-w-80 w-full border">
-          <div class="mx-auto">
+          <div class="mx-auto song-list">
             @for (song of $album?.songs; track song.title) {
             <app-songs-list [song]="song"></app-songs-list>
             }
