@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { SongFavorite } from '../../../models/favorites';
 
 const addFavoriteAlbum = createAction(
   '[Favorites] Add Album',
@@ -8,7 +7,7 @@ const addFavoriteAlbum = createAction(
 
 const addFavoriteSong = createAction(
   '[Favorites] Add Song',
-  props<{ song: SongFavorite }>()
+  props<{ songName: string }>()
 );
 
 export { addFavoriteAlbum, addFavoriteSong };

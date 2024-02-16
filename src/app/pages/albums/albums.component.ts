@@ -15,7 +15,7 @@ import { FavoritesState } from '../../store/favorites';
   styleUrl: './albums.component.scss'
 })
 export class AlbumsComponent implements OnInit {
-  $albums: Album[] = [];
+  albums: Album[] = [];
 
   constructor(
     private artistsService: ArtistService,
@@ -31,6 +31,6 @@ export class AlbumsComponent implements OnInit {
       .getArtists()
       .pipe(map((artists) => artists.map((artist) => artist.albums)))
       .pipe(map((albums) => albums.flat()))
-      .subscribe((albums) => (this.$albums = albums));
+      .subscribe((albums) => (this.albums = albums));
   }
 }

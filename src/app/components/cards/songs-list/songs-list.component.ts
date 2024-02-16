@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Song } from '../../../models/artist';
+import { Album } from '../../../models/artist';
 import { LucideAngularModule } from 'lucide-angular';
+import { FavoritesState } from '../../../store/favorites';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-songs-list',
@@ -10,5 +12,8 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrl: './songs-list.component.scss'
 })
 export class SongsListComponent {
-  @Input() song!: Song;
+  @Input() album!: Album;
+  @Input() addToFavorites!: (songName: string) => void;
+
+  constructor(private store: Store<FavoritesState>) {}
 }

@@ -5,6 +5,8 @@ import { ArtistService } from '../../../services/artist.service';
 import { map, switchMap } from 'rxjs';
 import { SongsListComponent } from '../../../components/cards/songs-list/songs-list.component';
 import { LucideAngularModule } from 'lucide-angular';
+import { FavoritesState, addFavoriteSong } from '../../../store/favorites';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-songs',
@@ -14,14 +16,19 @@ import { LucideAngularModule } from 'lucide-angular';
   styleUrl: './songs.component.scss'
 })
 export class SongsComponent implements OnInit {
-  $album: Album | null = null;
+  album!: Album;
   totalLength: string = '0';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private artistsService: ArtistService
+    private artistsService: ArtistService,
+    private store: Store<FavoritesState>
   ) {}
+
+  onAddSongToFavorites(songName: string) {
+    this.store.dispatch(addFavoriteSong({ songName }));
+  }
 
   ngOnInit(): void {
     this.route.params
@@ -45,7 +52,9 @@ export class SongsComponent implements OnInit {
         })
       )
       .subscribe(({ album, totalLength }) => {
-        this.$album = album || null;
+        if (album) {
+          this.album = album;
+        }
         this.totalLength = totalLength.toFixed(2).toString().replace('.', ':');
       });
   }

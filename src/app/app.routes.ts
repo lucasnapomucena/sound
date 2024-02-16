@@ -4,5 +4,6 @@ import { SongsComponent } from './pages/albums/songs/songs.component';
 
 export const routes: Routes = [
   { path: '', component: AlbumsComponent },
-  { path: 'albums/:name', component: SongsComponent }
+  { path: 'albums/:name', component: SongsComponent },
+  { path: 'favorites', component: SongsComponent }
 ];
