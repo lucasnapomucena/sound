@@ -1,61 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Album } from '../../../models/artist';
-import { ArtistService } from '../../../services/artist.service';
+import { Album, Song } from '../../../models/artist';
+import { CommonModule } from '@angular/common';
 import { map, switchMap } from 'rxjs';
 import { SongsListComponent } from '../../../components/cards/songs-list/songs-list.component';
 import { LucideAngularModule } from 'lucide-angular';
-import { FavoritesState, addFavoriteSong } from '../../../store/favorites';
+import { artistsActions } from '../../../store/actions';
+
 import { Store } from '@ngrx/store';
+import {
+  selectArtistsSongs,
+  selectIsSongFavorite
+} from '../../../store/selectors';
 
 @Component({
   selector: 'app-songs',
   standalone: true,
-  imports: [SongsListComponent, LucideAngularModule],
+  imports: [CommonModule, SongsListComponent, LucideAngularModule],
   templateUrl: './songs.component.html',
   styleUrl: './songs.component.scss'
 })
-export class SongsComponent implements OnInit {
+export class SongsComponent {
+  route = inject(ActivatedRoute);
+  store = inject(Store);
+  router = inject(Router);
+
+  album$ = this.route.params.pipe(
+    map((params) => params['name']),
+    switchMap((name) => this.store.select(selectArtistsSongs(name)))
+  );
+
   album!: Album;
-  totalLength: string = '0';
+  minutesTotal: string = '';
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private artistsService: ArtistService,
-    private store: Store<FavoritesState>
-  ) {}
+  onAddSongToFavorites(song: Song) {
+    this.store.dispatch(artistsActions.artistsAddFavoriteSong({ song }));
+  }
 
-  onAddSongToFavorites(songName: string) {
-    this.store.dispatch(addFavoriteSong({ songName }));
+  onRemoveSongToFavorites(songName: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ songName }));
+  }
+
+  isFavorite(songName: string) {
+    return this.store.select(selectIsSongFavorite(songName));
   }
 
   ngOnInit(): void {
-    this.route.params
-      .pipe(
-        switchMap((params) => {
-          const name = params['name'];
-          return this.artistsService.getArtists().pipe(
-            map((artists) => {
-              const allAlbums = artists.flatMap((artist) => artist.albums);
+    this.store.dispatch(artistsActions.artistsLoad());
+    this.album$.subscribe((album) => {
+      if (album) {
+        this.album = album;
 
-              const album = allAlbums.find((album) => album.title === name);
+        const minutesTotal = album.songs.reduce((acc, song) => {
+          return acc + parseFloat(song['length']);
+        }, 0);
 
-              const totalLength = album
-                ? album.songs.reduce((acc, song) => {
-                    return acc + parseFloat(song['length'].replace(':', '.'));
-                  }, 0)
-                : 0;
-              return { album, totalLength };
-            })
-          );
-        })
-      )
-      .subscribe(({ album, totalLength }) => {
-        if (album) {
-          this.album = album;
-        }
-        this.totalLength = totalLength.toFixed(2).toString().replace('.', ':');
-      });
+        this.minutesTotal = minutesTotal
+          .toFixed(2)
+          .toString()
+          .replace('.', ':');
+      }
+    });
   }
 }

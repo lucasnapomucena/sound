@@ -17,7 +17,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { favoritesReducer } from './store/favorites/reducers/favorites.reducers';
+import { appReducers } from './store/reducers';
+import { ArtistsEffect } from './store/effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +35,8 @@ import { favoritesReducer } from './store/favorites/reducers/favorites.reducers'
       DiscAlbum
     }),
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({ favorites: favoritesReducer }),
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([ArtistsEffect]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

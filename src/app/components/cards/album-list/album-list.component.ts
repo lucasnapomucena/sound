@@ -1,19 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Album } from '../../../models/artist';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-album-list',
   standalone: true,
-  imports: [LucideAngularModule, RouterModule],
+  imports: [CommonModule, LucideAngularModule, RouterModule],
   templateUrl: './album-list.component.html',
   styleUrl: './album-list.component.scss'
 })
 export class AlbumListComponent {
+  store = inject(Store);
   @Input() album!: Album;
-  @Input() addToFavorites!: (albumName: string) => void;
-
-  constructor(private store: Store) {}
+  @Input() addToFavorites!: (album: Album) => void;
+  @Input() removeToFavorites!: (albumName: string) => void;
+  @Input() isFavorite!: (albumName: string) => Observable<boolean>;
 }

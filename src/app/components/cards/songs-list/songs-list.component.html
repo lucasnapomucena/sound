@@ -11,8 +11,16 @@
       <p class="text-xs text-gray-500">{{song.length}}</p>
     </div>
   </div>
-  <button (click)="addToFavorites(song.title)">
+
+  @if(isFavorite(song.title) | async) {
+  <button (click)="removeToFavorites(song.title)">
     <lucide-icon name="heart-icon" strokeWidth="1" size="16"></lucide-icon>
   </button>
+
+  } @else {
+  <button (click)="addToFavorites(song)">
+    <lucide-icon name="heart-icon" strokeWidth="1" size="16"></lucide-icon>
+  </button>
+  }
 </div>
 }

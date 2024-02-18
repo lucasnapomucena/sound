@@ -1,27 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { Observable } from 'rxjs';
-
+import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-
-import { selectFavoritesTotal } from '../../store/favorites/selectors/favorites.selectors';
+import { selectFavoritesTotal } from '../../store/selectors';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
-  favoriteTotal$!: Observable<number>;
-  favoriteTotal!: number;
-
-  constructor(private store: Store<any>) {
-    this.favoriteTotal$ = this.store.select(selectFavoritesTotal);
-  }
-
-  ngOnInit(): void {
-    this.favoriteTotal$.subscribe((total) => (this.favoriteTotal = total));
-  }
+export class HeaderComponent {
+  store = inject(Store);
+  favoriteTotal$ = this.store.select(selectFavoritesTotal);
 }

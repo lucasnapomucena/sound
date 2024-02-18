@@ -9,9 +9,11 @@ export interface Album {
   images: string;
   songs: Song[];
   description: string;
+  isFavorite?: boolean;
 }
 
 export interface Song {
   title: string;
   length: string;
+  isFavorite?: boolean;
 }

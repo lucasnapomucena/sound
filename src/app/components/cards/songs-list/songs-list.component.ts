@@ -1,19 +1,20 @@
-import { Component, Input } from '@angular/core';
-import { Album } from '../../../models/artist';
+import { Component, Input, inject } from '@angular/core';
+import { Album, Song } from '../../../models/artist';
 import { LucideAngularModule } from 'lucide-angular';
-import { FavoritesState } from '../../../store/favorites';
+import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-songs-list',
   standalone: true,
-  imports: [LucideAngularModule],
-  templateUrl: './songs-list.component.html',
-  styleUrl: './songs-list.component.scss'
+  imports: [CommonModule, LucideAngularModule],
+  templateUrl: './songs-list.component.html'
 })
 export class SongsListComponent {
+  store = inject(Store);
   @Input() album!: Album;
-  @Input() addToFavorites!: (songName: string) => void;
-
-  constructor(private store: Store<FavoritesState>) {}
+  @Input() addToFavorites!: (song: Song) => void;
+  @Input() removeToFavorites!: (songName: string) => void;
+  @Input() isFavorite!: (songName: string) => Observable<boolean>;
 }
