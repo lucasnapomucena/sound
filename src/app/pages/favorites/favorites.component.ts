@@ -1,0 +1,39 @@
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {
+  selectFavoritesAlbum,
+  selectFavoritesSongs,
+  selectIsAlbumFavorite
+} from '../../store/selectors';
+import { artistsActions } from '../../store/actions';
+import { AlbumListComponent } from '../../components/cards/album-list/album-list.component';
+
+import { SongsListComponent } from '../../components/cards/songs-list/songs-list.component';
+
+@Component({
+  selector: 'app-favorites',
+  standalone: true,
+  imports: [CommonModule, SongsListComponent, AlbumListComponent],
+  templateUrl: './favorites.component.html',
+  styleUrl: './favorites.component.scss'
+})
+export class FavoritesComponent implements OnInit {
+  store = inject(Store);
+  albums$ = this.store.select(selectFavoritesAlbum);
+  songs$ = this.store.select(selectFavoritesSongs);
+
+  onRemoveToFavoritesAlbum(albumName: string) {
+    this.store.dispatch(
+      artistsActions.artistsRemoveFavoriteAlbum({ albumName })
+    );
+  }
+
+  isFavoriteAlbum(albumName: string) {
+    return this.store.select(selectIsAlbumFavorite(albumName));
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(artistsActions.artistsLoad());
+  }
+}

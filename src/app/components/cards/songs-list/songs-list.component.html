@@ -14,7 +14,11 @@
 
   @if(isFavorite(song.title) | async) {
   <button (click)="removeToFavorites(song.title)">
-    <lucide-icon name="heart-icon" strokeWidth="1" size="16"></lucide-icon>
+    <lucide-icon
+      name="heart-icon"
+      strokeWidth="1"
+      size="16"
+      color="red"></lucide-icon>
   </button>
 
   } @else {

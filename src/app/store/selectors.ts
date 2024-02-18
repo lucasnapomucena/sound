@@ -14,6 +14,16 @@ export const selectArtistsSongs = (albumName: string) =>
     state.find((album) => album.title === albumName)
   );
 
+export const selectFavoritesAlbum = createSelector(
+  selectFavorites,
+  (state) => state.album
+);
+
+export const selectFavoritesSongs = createSelector(
+  selectFavorites,
+  (state) => state.song
+);
+
 export const selectFavoritesTotal = createSelector(
   selectFavorites,
   (state) => state.album.length + state.song.length

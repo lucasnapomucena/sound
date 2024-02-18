@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 export class AlbumListComponent {
   store = inject(Store);
   @Input() album!: Album;
-  @Input() addToFavorites!: (album: Album) => void;
+  @Input({ required: false }) addToFavorites!: (album: Album) => void;
   @Input() removeToFavorites!: (albumName: string) => void;
   @Input() isFavorite!: (albumName: string) => Observable<boolean>;
 }

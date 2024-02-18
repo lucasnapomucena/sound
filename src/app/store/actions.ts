@@ -4,7 +4,7 @@ import { Album, Artist, Song } from '../models/artist';
 const artistsLoad = createAction('[Artists] Carregar Artistas');
 
 const artistsLoadWithSuccess = createAction(
-  '[Artists] Artistas Carregados Sucesso',
+  '[Artists] Loaded Artists Success',
   props<{ artists: Artist[] }>()
 );
 

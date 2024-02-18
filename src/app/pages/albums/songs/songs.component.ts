@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Album, Song } from '../../../models/artist';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,7 @@ import {
   templateUrl: './songs.component.html',
   styleUrl: './songs.component.scss'
 })
-export class SongsComponent {
+export class SongsComponent implements OnInit {
   route = inject(ActivatedRoute);
   store = inject(Store);
   router = inject(Router);

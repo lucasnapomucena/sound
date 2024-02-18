@@ -24,7 +24,9 @@
 
           <div
             class="absolute flex items-center justify-center -top-0.5 text-center p-1 -right-0.5 w-4 h-4 text-white text-xs bg-black rounded-full">
-            {{favoriteTotal$ | async}}
+            <a routerLink="/favorites" title="Favorites">
+              {{favoriteTotal$ | async}}
+            </a>
           </div>
         </button>
       </div>
