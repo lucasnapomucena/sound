@@ -4,7 +4,8 @@ import { Store } from '@ngrx/store';
 import {
   selectFavoritesAlbum,
   selectFavoritesSongs,
-  selectIsAlbumFavorite
+  selectIsAlbumFavorite,
+  selectIsSongFavorite
 } from '../../store/selectors';
 import { artistsActions } from '../../store/actions';
 import { AlbumListComponent } from '../../components/cards/album-list/album-list.component';
@@ -29,8 +30,16 @@ export class FavoritesComponent implements OnInit {
     );
   }
 
+  onRemoveToFavoritesSong(songName: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ songName }));
+  }
+
   isFavoriteAlbum(albumName: string) {
     return this.store.select(selectIsAlbumFavorite(albumName));
+  }
+
+  isFavoriteSong(songName: string) {
+    return this.store.select(selectIsSongFavorite(songName));
   }
 
   ngOnInit(): void {

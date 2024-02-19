@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Album, Artist, Song } from '../models/artist';
 
-const artistsLoad = createAction('[Artists] Carregar Artistas');
+const artistsLoad = createAction('[Artists] Load Artists');
 
 const artistsLoadWithSuccess = createAction(
   '[Artists] Loaded Artists Success',

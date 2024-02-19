@@ -1,11 +1,5 @@
-@for (song of album.songs; track song.title) {
-<div
-  class="flex items-center justify-between py-2 px-4 border-b border-gray-200">
+<div class="flex items-center justify-between py-2 px-4 border">
   <div class="flex items-center">
-    <img
-      [src]="album.images"
-      [alt]="album.title"
-      class="w-8 h-8 rounded-full" />
     <div class="ml-3">
       <p class="text-sm">{{song.title}}</p>
       <p class="text-xs text-gray-500">{{song.length}}</p>
@@ -18,7 +12,7 @@
       name="heart-icon"
       strokeWidth="1"
       size="16"
-      color="red"></lucide-icon>
+      color="#be123c"></lucide-icon>
   </button>
 
   } @else {
@@ -27,4 +21,3 @@
   </button>
   }
 </div>
-}

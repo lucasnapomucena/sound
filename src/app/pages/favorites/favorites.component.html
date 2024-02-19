@@ -1,5 +1,5 @@
-<div class="flex flex-col">
-  <h1 class="font-medium text-2xl mb-6">Favorites Album</h1>
+<div class="flex flex-col mb-10">
+  <h1 class="font-medium text-2xl mb-6">Favorites Albums</h1>
   <div class="flex gap-8 flex-wrap">
     @for (album of albums$ | async; track album.title) {
 
@@ -10,5 +10,24 @@
     } @empty {
     <p>No albums</p>
     }
+  </div>
+</div>
+
+<div class="flex flex-col">
+  <h1 class="font-medium text-2xl mb-6">Favorites Songs</h1>
+
+  <div class="bg-white min-w-80 w-full">
+    <div class="mx-auto">
+      @for (song of songs$ | async; track song.title) {
+
+      <app-songs-list
+        [song]="song"
+        [removeToFavorites]="onRemoveToFavoritesSong"
+        [isFavorite]="isFavoriteSong"></app-songs-list>
+
+      } @empty {
+      <p>No songs</p>
+      }
+    </div>
   </div>
 </div>
