@@ -52,7 +52,7 @@ export class SongsComponent implements OnInit {
         this.album = album;
 
         const minutesTotal = album.songs.reduce((acc, song) => {
-          return acc + parseFloat(song['length']);
+          return acc + parseFloat(song['length'].replace(':', '.'));
         }, 0);
 
         this.minutesTotal = minutesTotal
