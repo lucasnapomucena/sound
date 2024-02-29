@@ -7,17 +7,25 @@
   </div>
 
   @if(isFavorite(song.title) | async) {
-  <button (click)="removeToFavorites(song.title)">
-    <lucide-icon
-      name="heart-icon"
-      strokeWidth="1"
-      size="16"
-      color="#be123c"></lucide-icon>
+  <button
+    (click)="removeToFavorites(song.title)"
+    class="flex items-center justify-center">
+    <mat-icon
+      aria-hidden="true"
+      aria-label="favorite icon"
+      fontIcon="favorite"
+      class="text-red-300 text-xl"></mat-icon>
   </button>
 
   } @else {
-  <button (click)="addToFavorites(song)">
-    <lucide-icon name="heart-icon" strokeWidth="1" size="16"></lucide-icon>
+  <button
+    (click)="addToFavorites(song)"
+    class="flex items-center justify-center">
+    <mat-icon
+      aria-hidden="true"
+      aria-label="favorite icon"
+      fontIcon="favorite_border"
+      class="text-xl"></mat-icon>
   </button>
   }
 </div>

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { LucideAngularModule } from 'lucide-angular';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectFavoritesTotal } from '../../store/selectors';
@@ -8,7 +9,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, LucideAngularModule],
+  imports: [CommonModule, RouterModule, MatBadgeModule, MatIconModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

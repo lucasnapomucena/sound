@@ -10,22 +10,22 @@
       class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-20 flex items-center justify-center flex-col">
       @if(isFavorite(album.title) | async) {
       <button
-        class="p-2 bg-white rounded-full"
+        class="p-2 w-10 h-10 bg-white rounded-full"
         (click)="removeToFavorites(album.title)">
-        <lucide-icon
-          name="heart-icon"
-          class="selected"
-          strokeWidth="1"
-          [size]="24"
-          color="#be123c"></lucide-icon>
+        <mat-icon
+          aria-hidden="true"
+          aria-label="favorite icon"
+          fontIcon="favorite"
+          class="text-red-300"></mat-icon>
       </button>
       } @else {
-      <button class="p-2 bg-white rounded-full" (click)="addToFavorites(album)">
-        <lucide-icon
-          name="heart-icon"
-          class="flex justify-center items-center"
-          strokeWidth="1"
-          [size]="24"></lucide-icon>
+      <button
+        class="p-2 w-10 h-10 bg-white rounded-full"
+        (click)="addToFavorites(album)">
+        <mat-icon
+          aria-hidden="true"
+          aria-label="favorite icon"
+          fontIcon="favorite_border"></mat-icon>
       </button>
       }
       <p class="text-xl mt-1 font-light text-center text-white">

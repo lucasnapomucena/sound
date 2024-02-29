@@ -1,9 +1,12 @@
 <div class="flex gap-4 w-full py-4 px-8 border-b justify-between items-center">
   <div class="max-w-72 w-full relative transition-all duration-300 search">
     <button
-      class="absolute left-2 top-0 mt-2 mr-3 focus:outline-none"
-      id="searchButton">
-      <lucide-icon name="search"></lucide-icon>
+      class="absolute left-2 top-0 mt-1 mr-3 focus:outline-none flex items-center justify-center">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="search icon"
+        fontIcon="search"
+        class="text-2xl"></mat-icon>
     </button>
     <input
       type="text"
@@ -14,22 +17,12 @@
 
   <div class="flex justify-between items-center">
     <div class="flex items-center gap-4">
-      <div class="flex items-center">
-        <button class="relative">
-          <lucide-icon
-            name="heart-icon"
-            strokeWidth="1"
-            [size]="24"
-            class="flex items-center"></lucide-icon>
+      <a routerLink="/favorites" title="Favorites" class="flex items-center">
+        <mat-icon matBadge="0" matBadgeSize="small" matBadgeColor="accent"
+          >favorite_border</mat-icon
+        >
+      </a>
 
-          <div
-            class="absolute flex items-center justify-center -top-0.5 text-center p-1 -right-0.5 w-4 h-4 text-white text-xs bg-black rounded-full">
-            <a routerLink="/favorites" title="Favorites">
-              {{favoriteTotal$ | async}}
-            </a>
-          </div>
-        </button>
-      </div>
       <div class="h-8 w-8 rounded-full bg-gray-400 overflow-hidden">
         <img
           src="https://avatars.githubusercontent.com/u/51701018?v=4"
