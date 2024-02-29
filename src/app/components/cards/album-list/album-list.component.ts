@@ -1,15 +1,14 @@
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Album } from '../../../models/artist';
-import { LucideAngularModule } from 'lucide-angular';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-album-list',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, RouterModule],
+  imports: [CommonModule, MatIconModule, RouterModule],
   templateUrl: './album-list.component.html',
   styleUrl: './album-list.component.scss'
 })

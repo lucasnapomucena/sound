@@ -4,7 +4,6 @@ import { Album, Song } from '../../../models/artist';
 import { CommonModule } from '@angular/common';
 import { map, switchMap } from 'rxjs';
 import { SongsListComponent } from '../../../components/cards/songs-list/songs-list.component';
-import { LucideAngularModule } from 'lucide-angular';
 import { artistsActions } from '../../../store/actions';
 
 import { Store } from '@ngrx/store';
@@ -16,7 +15,7 @@ import {
 @Component({
   selector: 'app-songs',
   standalone: true,
-  imports: [CommonModule, SongsListComponent, LucideAngularModule],
+  imports: [CommonModule, SongsListComponent],
   templateUrl: './songs.component.html',
   styleUrl: './songs.component.scss'
 })
