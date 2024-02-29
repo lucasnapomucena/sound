@@ -20,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './store/reducers';
 import { ArtistsEffect } from './store/effects';
 import { EffectsModule } from '@ngrx/effects';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,7 +45,7 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     LayoutComponent
   ],
-  providers: [],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
