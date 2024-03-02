@@ -8,6 +8,11 @@ const artistsLoadWithSuccess = createAction(
   props<{ artists: Artist[] }>()
 );
 
+const artistsAddAlbum = createAction(
+  '[Artists] Add Album',
+  props<{ artistName: string; album: Album }>()
+);
+
 const artistsAddFavoriteAlbum = createAction(
   '[Favorites] Add Album',
   props<{ album: Album }>()
@@ -31,6 +36,7 @@ const artistsRemoveFavoriteSong = createAction(
 export const artistsActions = {
   artistsLoad,
   artistsLoadWithSuccess,
+  artistsAddAlbum,
   artistsAddFavoriteAlbum,
   artistsRemoveFavoriteAlbum,
   artistsAddFavoriteSong,

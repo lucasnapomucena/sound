@@ -18,6 +18,20 @@ export const artistsReducer = createReducer(
       artists: artistObj.artists,
       status: ArtistStatus.success
     };
+  }),
+  on(artistsActions.artistsAddAlbum, (state, albumtObj) => {
+    return {
+      ...state,
+      artists: state.artists.map((artist) => {
+        if (artist.name === albumtObj.artistName) {
+          return {
+            ...artist,
+            albums: [...artist.albums, albumtObj.album]
+          };
+        }
+        return artist;
+      })
+    };
   })
 );
 

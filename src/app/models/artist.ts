@@ -11,5 +11,5 @@ export interface Album {
 }
 export interface Song {
   title: string;
-  length: string;
+  duration: string;
 }

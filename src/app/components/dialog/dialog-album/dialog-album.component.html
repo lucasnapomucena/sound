@@ -1,0 +1,78 @@
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <mat-form-field class="w-full">
+      <mat-label>Artist</mat-label>
+      <mat-select formControlName="name">
+        @for (artist of artistList$ | async; track artist) {
+        <mat-option [value]="artist">{{artist}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-full" [floatLabel]="'always'">
+      <mat-label>Album Name</mat-label>
+      <input matInput placeholder="Ex. Dawn FM" formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full" [floatLabel]="'always'">
+      <mat-label>Image URL</mat-label>
+      <input matInput placeholder="Ex. https://" formControlName="images" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full" [floatLabel]="'always'">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. It makes me feel..."
+        formControlName="description"></textarea>
+    </mat-form-field>
+
+    <h2>Songs</h2>
+
+    <div class="border p-4" formArrayName="songs">
+      <div
+        *ngFor="let song of songsFields.controls; let i = index"
+        [formGroupName]="i">
+        <div class="w-full flex gap-4">
+          <mat-form-field [floatLabel]="'always'" class="w-full">
+            <mat-label>Song Name</mat-label>
+            <input matInput placeholder="Ex. Dawn FM" formControlName="title" />
+          </mat-form-field>
+
+          <mat-form-field [floatLabel]="'always'" class="w-full">
+            <mat-label>Size</mat-label>
+            <input matInput placeholder="04:20" formControlName="duration" />
+          </mat-form-field>
+
+          <button type="button" (click)="removeSong(i)">
+            <mat-icon
+              aria-hidden="true"
+              aria-label="delete icon"
+              fontIcon="delete"></mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="addNewSong()"
+      class="flex items-center gap-2 mt-2">
+      <mat-icon
+        aria-hidden="true"
+        aria-label="add icon"
+        fontIcon="add_circle"></mat-icon>
+    </button>
+
+    <mat-dialog-actions [align]="'end'">
+      <button mat-stroked-button mat-dialog-close>Cancel</button>
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="!form.valid">
+        Create
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

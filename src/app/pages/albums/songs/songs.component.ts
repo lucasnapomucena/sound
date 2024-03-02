@@ -5,17 +5,29 @@ import { CommonModule } from '@angular/common';
 import { map, switchMap } from 'rxjs';
 import { SongsListComponent } from '../../../components/cards/songs-list/songs-list.component';
 import { artistsActions } from '../../../store/actions';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { Store } from '@ngrx/store';
 import {
   selectArtistsSongs,
   selectIsSongFavorite
 } from '../../../store/selectors';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAlbumComponent } from '../../../components/dialog/dialog-album/dialog-album.component';
 
 @Component({
   selector: 'app-songs',
   standalone: true,
-  imports: [CommonModule, SongsListComponent],
+  imports: [
+    CommonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    SongsListComponent
+  ],
   templateUrl: './songs.component.html',
   styleUrl: './songs.component.scss'
 })
@@ -23,6 +35,7 @@ export class SongsComponent implements OnInit {
   route = inject(ActivatedRoute);
   store = inject(Store);
   router = inject(Router);
+  dialog = inject(MatDialog);
 
   album$ = this.route.params.pipe(
     map((params) => params['name']),
@@ -44,6 +57,14 @@ export class SongsComponent implements OnInit {
     return this.store.select(selectIsSongFavorite(songName));
   }
 
+  onEditAlbum(album: Album) {
+    this.dialog.open(DialogAlbumComponent, {
+      data: album,
+      maxWidth: '40vw',
+      width: '100%'
+    });
+  }
+
   ngOnInit(): void {
     this.store.dispatch(artistsActions.artistsLoad());
     this.album$.subscribe((album) => {
@@ -51,7 +72,7 @@ export class SongsComponent implements OnInit {
         this.album = album;
 
         const minutesTotal = album.songs.reduce((acc, song) => {
-          return acc + parseFloat(song['length'].replace(':', '.'));
+          return acc + parseFloat(song.duration.replace(':', '.'));
         }, 0);
 
         this.minutesTotal = minutesTotal

@@ -9,6 +9,15 @@ export const selectArtistsAlbum = createSelector(selectArtists, (state) =>
   state.flatMap((artist) => artist.albums)
 );
 
+export const selectArtistsList = createSelector(selectArtists, (state) =>
+  state.map((artist) => artist.name)
+);
+
+export const selectArtistsName = (artistName: string) =>
+  createSelector(selectArtists, (state) =>
+    state.filter((artist) => artist.name === artistName)
+  );
+
 export const selectArtistsSongs = (albumName: string) =>
   createSelector(selectArtistsAlbum, (state) =>
     state.find((album) => album.title === albumName)

@@ -1,8 +1,8 @@
-<div class="flex items-center justify-between py-2 px-4 border">
+<div class="flex items-center justify-between py-2 px-4">
   <div class="flex items-center">
     <div class="ml-3">
       <p class="text-sm">{{song.title}}</p>
-      <p class="text-xs text-gray-500">{{song.length}}</p>
+      <p class="text-xs text-gray-500">{{song.duration}}</p>
     </div>
   </div>
 
@@ -14,7 +14,7 @@
       aria-hidden="true"
       aria-label="favorite icon"
       fontIcon="favorite"
-      class="text-red-300 text-xl"></mat-icon>
+      color="accent"></mat-icon>
   </button>
 
   } @else {

@@ -1,33 +1,42 @@
-<div class="flex flex-col mb-10">
-  <h1 class="font-medium text-2xl mb-6">Favorites Albums</h1>
-  <div class="flex gap-8 flex-wrap">
-    @for (album of albums$ | async; track album.title) {
+<h1 class="font-medium text-2xl mb-6">Favorites Albums</h1>
+<mat-card class="mb-6">
+  <mat-card-content>
+    <div class="flex flex-col mb-10">
+      <div class="flex gap-8 flex-wrap">
+        @for (album of albums$ | async; track album.title) {
 
-    <app-album-list
-      [album]="album"
-      [removeToFavorites]="onRemoveToFavoritesAlbum"
-      [isFavorite]="isFavoriteAlbum"></app-album-list>
-    } @empty {
-    <p>No albums</p>
-    }
-  </div>
-</div>
-
-<div class="flex flex-col">
-  <h1 class="font-medium text-2xl mb-6">Favorites Songs</h1>
-
-  <div class="bg-white min-w-80 w-full">
-    <div class="mx-auto">
-      @for (song of songs$ | async; track song.title) {
-
-      <app-songs-list
-        [song]="song"
-        [removeToFavorites]="onRemoveToFavoritesSong"
-        [isFavorite]="isFavoriteSong"></app-songs-list>
-
-      } @empty {
-      <p>No songs</p>
-      }
+        <app-album-list
+          [album]="album"
+          [removeToFavorites]="onRemoveToFavoritesAlbum"
+          [isFavorite]="isFavoriteAlbum"></app-album-list>
+        } @empty {
+        <p>No albums</p>
+        }
+      </div>
     </div>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
+
+<h1 class="font-medium text-2xl mb-6">Favorites Songs</h1>
+<mat-card>
+  <mat-card-content>
+    <div class="flex flex-col">
+      <div class="bg-white min-w-80 w-full">
+        <div class="mx-auto">
+          @for (song of songs$ | async; track song.title) {
+
+          <app-songs-list
+            [song]="song"
+            [removeToFavorites]="onRemoveToFavoritesSong"
+            [isFavorite]="isFavoriteSong"></app-songs-list>
+
+          <mat-divider></mat-divider>
+
+          } @empty {
+          <p>No songs</p>
+          }
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

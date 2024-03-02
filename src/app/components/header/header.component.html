@@ -1,33 +1,43 @@
-<div class="flex gap-4 w-full py-4 px-8 border-b justify-between items-center">
-  <div class="max-w-72 w-full relative transition-all duration-300 search">
-    <button
-      class="absolute left-2 top-0 mt-1 mr-3 focus:outline-none flex items-center justify-center">
-      <mat-icon
-        aria-hidden="false"
-        aria-label="search icon"
-        fontIcon="search"
-        class="text-2xl"></mat-icon>
-    </button>
-    <input
-      type="text"
-      class="w-full px-10 py-2 border border-gray-300 rounded-lg bg-gray-100"
-      placeholder="Search..."
-      id="searchInput" />
-  </div>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="flex gap-4 w-full justify-between items-center">
+      <div class="max-w-72 w-full relative transition-all duration-300 search">
+        <button
+          class="absolute left-2 top-0 mt-1 mr-3 focus:outline-none flex items-center justify-center">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="search icon"
+            fontIcon="search"
+            class="text-2xl"></mat-icon>
+        </button>
+        <input
+          type="text"
+          class="w-full px-10 py-2 border border-gray-300 rounded-lg bg-gray-100"
+          placeholder="Search..."
+          id="searchInput" />
+      </div>
 
-  <div class="flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <a routerLink="/favorites" title="Favorites" class="flex items-center">
-        <mat-icon matBadge="0" matBadgeSize="small" matBadgeColor="accent"
-          >favorite_border</mat-icon
-        >
-      </a>
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <a
+            routerLink="/favorites"
+            title="Favorites"
+            class="flex items-center">
+            <mat-icon
+              [matBadge]="favoriteTotal"
+              matBadgeSize="small"
+              matBadgeColor="accent"
+              >favorite_border</mat-icon
+            >
+          </a>
 
-      <div class="h-8 w-8 rounded-full bg-gray-400 overflow-hidden">
-        <img
-          src="https://avatars.githubusercontent.com/u/51701018?v=4"
-          alt="user" />
+          <div class="h-8 w-8 rounded-full bg-gray-400 overflow-hidden">
+            <img
+              src="https://avatars.githubusercontent.com/u/51701018?v=4"
+              alt="user" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </mat-toolbar-row>
+</mat-toolbar>
