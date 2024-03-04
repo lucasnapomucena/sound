@@ -53,7 +53,11 @@ export const artistsReducer = createReducer<ArtistState>(
               if (album.id === albumtObj.album.id) {
                 return {
                   ...album,
-                  ...albumtObj.album
+                  ...albumtObj.album,
+                  songs: albumtObj.album.songs.map((song) => ({
+                    ...song,
+                    id: uuidv4()
+                  }))
                 };
               }
               return album;
