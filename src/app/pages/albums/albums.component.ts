@@ -2,14 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Album } from '../../models/artist';
-import { AlbumListComponent } from '../../components/cards/album-list/album-list.component';
-import { DialogAlbumComponent } from '../../components/dialog/dialog-album/dialog-album.component';
-import { artistsActions } from '../../store/actions';
+import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
+import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
+import { artistsActions } from '@store/actions';
 import { Store } from '@ngrx/store';
-import {
-  selectArtistsAlbum,
-  selectIsAlbumFavorite
-} from '../../store/selectors';
+import { selectArtistsAlbum, selectIsAlbumFavorite } from '@store/selectors';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -49,6 +46,9 @@ export class AlbumsComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAlbumComponent, {
+      data: {
+        editMode: false
+      },
       maxWidth: '50vw',
       width: '100%'
     });

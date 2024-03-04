@@ -22,9 +22,12 @@ import {
   FormGroup
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectArtistsList } from '../../../store/selectors';
-import { Album } from '../../../models/artist';
-
+import { selectArtistsList } from '@store/selectors';
+import { Album } from '@models/artist';
+interface IDialogAlbumComponent {
+  data: Album;
+  editMode: boolean;
+}
 @Component({
   selector: 'app-dialog-album',
   standalone: true,
@@ -51,10 +54,10 @@ export class DialogAlbumComponent implements OnInit {
   dialogRef = inject(MatDialogRef<DialogAlbumComponent>);
   artistList$ = this.store.select(selectArtistsList);
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Album) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public props: IDialogAlbumComponent) {}
 
   form: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
+    name: ['', [Validators.required]],
     title: ['', [Validators.required, Validators.minLength(3)]],
     images: ['', [Validators.required, Validators.pattern('https?://.+')]],
     description: ['', [Validators.required, Validators.minLength(3)]],
@@ -78,9 +81,9 @@ export class DialogAlbumComponent implements OnInit {
 
     songs.push(
       this.fb.group({
-        title: [null, Validators.required],
+        title: ['', Validators.required],
         duration: [
-          null,
+          '',
           [Validators.required, Validators.pattern('^[0-9]+:[0-5][0-9]$')]
         ]
       })
@@ -102,15 +105,14 @@ export class DialogAlbumComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.data) {
+    if (this.props.data) {
       const songsFormArray = this.fb.array(
-        this.data.songs.map((song) => this.fb.group(song))
+        this.props.data.songs.map((song) => this.fb.group(song))
       );
 
       this.form.setControl('songs', songsFormArray);
       this.form.patchValue({
-        ...this.data,
-        name: 'dasda',
+        ...this.props.data,
         songs: songsFormArray.value
       });
     }

@@ -32,6 +32,28 @@ export const artistsReducer = createReducer(
         return artist;
       })
     };
+  }),
+  on(artistsActions.artistsEditAlbum, (state, albumtObj) => {
+    return {
+      ...state,
+      artists: state.artists.map((artist) => {
+        if (artist.name === albumtObj.artistName) {
+          return {
+            ...artist,
+            albums: artist.albums.map((album) => {
+              if (album.title === albumtObj.album.title) {
+                return {
+                  ...album,
+                  ...albumtObj.album
+                };
+              }
+              return album;
+            })
+          };
+        }
+        return artist;
+      })
+    };
   })
 );
 

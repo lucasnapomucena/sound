@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Song } from '../../../models/artist';
+import { Song } from '@models/artist';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';

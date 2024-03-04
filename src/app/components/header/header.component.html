@@ -21,14 +21,13 @@
         <div class="flex items-center gap-4">
           <a
             routerLink="/favorites"
-            title="Favorites"
-            class="flex items-center">
-            <mat-icon
-              [matBadge]="favoriteTotal"
-              matBadgeSize="small"
-              matBadgeColor="accent"
-              >favorite_border</mat-icon
-            >
+            mat-raised-button
+            [matBadge]="favoriteTotal$ | async"
+            matBadgeSize="small"
+            matBadgePosition="after"
+            matBadgeColor="accent"
+            disabled>
+            <mat-icon aria-hidden="true" fontIcon="favorite_border"></mat-icon>
           </a>
 
           <div class="h-8 w-8 rounded-full bg-gray-400 overflow-hidden">

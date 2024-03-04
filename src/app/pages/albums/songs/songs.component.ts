@@ -1,21 +1,22 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Album, Song } from '../../../models/artist';
+import { Album, Artist, Song } from '@models/artist';
 import { CommonModule } from '@angular/common';
-import { map, switchMap } from 'rxjs';
-import { SongsListComponent } from '../../../components/cards/songs-list/songs-list.component';
-import { artistsActions } from '../../../store/actions';
+import { Observable, firstValueFrom, map, switchMap } from 'rxjs';
+import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
+import { artistsActions } from '@store/actions';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { Store } from '@ngrx/store';
 import {
+  selectArtistByAlbumName,
   selectArtistsSongs,
   selectIsSongFavorite
-} from '../../../store/selectors';
+} from '@store/selectors';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogAlbumComponent } from '../../../components/dialog/dialog-album/dialog-album.component';
+import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
 
 @Component({
   selector: 'app-songs',
@@ -57,11 +58,31 @@ export class SongsComponent implements OnInit {
     return this.store.select(selectIsSongFavorite(songName));
   }
 
-  onEditAlbum(album: Album) {
-    this.dialog.open(DialogAlbumComponent, {
-      data: album,
-      maxWidth: '40vw',
+  onSelectArtistByAlbumName(albumName: string): Observable<Artist | undefined> {
+    return this.store.select(selectArtistByAlbumName(albumName));
+  }
+
+  async onEditAlbum(album: Album) {
+    const artistName = await firstValueFrom(
+      this.onSelectArtistByAlbumName(album.title)
+    );
+
+    const dialogRef = this.dialog.open(DialogAlbumComponent, {
+      data: {
+        editMode: true,
+        data: { ...album, name: artistName?.name }
+      },
+      maxWidth: '600px',
       width: '100%'
+    });
+
+    dialogRef.afterClosed().subscribe((props) => {
+      this.store.dispatch(
+        artistsActions.artistsEditAlbum({
+          artistName: props.name,
+          album: props
+        })
+      );
     });
   }
 

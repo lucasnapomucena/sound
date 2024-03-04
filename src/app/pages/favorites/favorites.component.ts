@@ -6,14 +6,14 @@ import {
   selectFavoritesSongs,
   selectIsAlbumFavorite,
   selectIsSongFavorite
-} from '../../store/selectors';
-import { artistsActions } from '../../store/actions';
+} from '@store/selectors';
+import { artistsActions } from '@store/actions';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { AlbumListComponent } from '../../components/cards/album-list/album-list.component';
+import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
 
-import { SongsListComponent } from '../../components/cards/songs-list/songs-list.component';
+import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
 
 @Component({
   selector: 'app-favorites',

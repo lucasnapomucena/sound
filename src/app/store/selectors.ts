@@ -1,7 +1,9 @@
 import { createSelector } from '@ngrx/store';
 import { IAppState } from './states';
+import { Artist } from '../models/artist';
 
-export const selectArtists = (state: IAppState) => state.artists.artists;
+export const selectArtists = (state: IAppState): Artist[] =>
+  state.artists.artists;
 
 export const selectFavorites = (state: IAppState) => state.favorites;
 
@@ -22,6 +24,16 @@ export const selectArtistsSongs = (albumName: string) =>
   createSelector(selectArtistsAlbum, (state) =>
     state.find((album) => album.title === albumName)
   );
+
+export const selectArtistByAlbumName = (albumName: string) =>
+  createSelector(selectArtists, (state) => {
+    for (const artist of state) {
+      if (artist.albums.some((album) => album.title === albumName)) {
+        return artist;
+      }
+    }
+    return undefined;
+  });
 
 export const selectFavoritesAlbum = createSelector(
   selectFavorites,
