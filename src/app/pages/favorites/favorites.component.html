@@ -7,8 +7,8 @@
 
         <app-album-list
           [album]="album"
-          [removeToFavorites]="onRemoveToFavoritesAlbum"
-          [isFavorite]="isFavoriteAlbum"></app-album-list>
+          [removeToFavorites]="favorites.onRemoveToFavoritesAlbum"
+          [isFavorite]="favorites.isFavoriteAlbum"></app-album-list>
         } @empty {
         <p>No albums</p>
         }
@@ -27,8 +27,8 @@
 
           <app-songs-list
             [song]="song"
-            [removeToFavorites]="onRemoveToFavoritesSong"
-            [isFavorite]="isFavoriteSong"></app-songs-list>
+            [removeToFavorites]="favorites.onRemoveSongToFavorites"
+            [isFavorite]="favorites.isFavoriteSong"></app-songs-list>
 
           <mat-divider></mat-divider>
 

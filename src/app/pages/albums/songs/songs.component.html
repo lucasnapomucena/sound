@@ -12,10 +12,10 @@
 
             <div
               class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-20 flex items-center justify-center flex-col">
-              @if(isFavoriteAlbum(album.id) | async) {
+              @if(favorites.isFavoriteAlbum(album.id) | async) {
               <button
                 class="p-2 w-10 h-10 bg-white rounded-full"
-                (click)="onRemoveToFavoritesAlbum(album.id)">
+                (click)="favorites.onRemoveToFavoritesAlbum(album.id)">
                 <mat-icon
                   aria-hidden="true"
                   aria-label="favorite icon"
@@ -25,7 +25,7 @@
               } @else {
               <button
                 class="p-2 w-10 h-10 bg-white rounded-full"
-                (click)="onAddToFavoritesAlbum(album)">
+                (click)="favorites.onAddToFavoritesAlbum(album)">
                 <mat-icon
                   aria-hidden="true"
                   aria-label="favorite icon"
@@ -78,9 +78,9 @@
               @for (song of album.songs; track album.title) {
               <app-songs-list
                 [song]="song"
-                [addToFavorites]="onAddSongToFavorites"
-                [removeToFavorites]="onRemoveSongToFavorites"
-                [isFavorite]="isFavorite"></app-songs-list>
+                [addToFavorites]="favorites.onAddSongToFavorites"
+                [removeToFavorites]="favorites.onRemoveSongToFavorites"
+                [isFavorite]="favorites.isFavoriteSong"></app-songs-list>
 
               @if(song !== album.songs[album.songs.length - 1]) {
               <mat-divider></mat-divider>

@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Album, Artist, Song } from '@models/artist';
+import { Album, Artist } from '@models/artist';
 import { CommonModule } from '@angular/common';
 import { Observable, firstValueFrom, map, switchMap } from 'rxjs';
 import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
@@ -9,15 +9,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { Store } from '@ngrx/store';
-import {
-  selectArtistByAlbumId,
-  selectArtistsSongs,
-  selectIsAlbumFavorite,
-  selectIsSongFavorite
-} from '@store/selectors';
+import { selectArtistByAlbumId, selectArtistsSongs } from '@store/selectors';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
+import { Favorites } from '@shared/helpers/favorites';
 
 @Component({
   selector: 'app-songs',
@@ -38,6 +34,7 @@ export class SongsComponent implements OnInit {
   store = inject(Store);
   router = inject(Router);
   dialog = inject(MatDialog);
+  favorites = inject(Favorites);
 
   album$ = this.route.params.pipe(
     map((params) => params['id']),
@@ -45,30 +42,6 @@ export class SongsComponent implements OnInit {
   );
   album!: Album;
   minutesTotal: string = '';
-
-  onAddToFavoritesAlbum(album: Album) {
-    this.store.dispatch(artistsActions.artistsAddFavoriteAlbum({ album }));
-  }
-
-  onRemoveToFavoritesAlbum(id: string) {
-    this.store.dispatch(artistsActions.artistsRemoveFavoriteAlbum({ id }));
-  }
-
-  isFavoriteAlbum(id: string) {
-    return this.store.select(selectIsAlbumFavorite(id));
-  }
-
-  onAddSongToFavorites(song: Song) {
-    this.store.dispatch(artistsActions.artistsAddFavoriteSong({ song }));
-  }
-
-  onRemoveSongToFavorites(id: string) {
-    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ id }));
-  }
-
-  isFavorite(id: string) {
-    return this.store.select(selectIsSongFavorite(id));
-  }
 
   onSelectArtistByAlbumId(id: string): Observable<Artist | undefined> {
     return this.store.select(selectArtistByAlbumId(id));
@@ -89,7 +62,6 @@ export class SongsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((props) => {
-      console.log(props, 'props');
       this.store.dispatch(
         artistsActions.artistsEditAlbum({
           artistName: props.name,
