@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
@@ -9,4 +9,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  @Output() toggle = new EventEmitter<void>();
+
+  onToggle() {
+    this.toggle.emit();
+  }
+}

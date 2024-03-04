@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,4 +23,10 @@ import { selectFavoritesTotal } from '@store/selectors';
 export class HeaderComponent {
   store = inject(Store);
   favoriteTotal$ = this.store.select(selectFavoritesTotal);
+  @Output() toggle = new EventEmitter<void>();
+  @Input() isSidenavOpened!: boolean;
+
+  onToggle() {
+    this.toggle.emit();
+  }
 }

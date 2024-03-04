@@ -1,20 +1,31 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <div class="flex gap-4 w-full justify-between items-center">
-      <div class="max-w-72 w-full relative transition-all duration-300 search">
-        <button
-          class="absolute left-2 top-0 mt-1 mr-3 focus:outline-none flex items-center justify-center">
+      <div class="flex w-full items-center gap-2">
+        @if(!isSidenavOpened) {
+        <button (click)="onToggle()" class="flex items-center">
           <mat-icon
             aria-hidden="false"
-            aria-label="search icon"
-            fontIcon="search"
-            class="text-2xl"></mat-icon>
+            aria-label="menu icon"
+            fontIcon="menu"></mat-icon>
         </button>
-        <input
-          type="text"
-          class="w-full px-10 py-2 border border-gray-300 rounded-lg bg-gray-100"
-          placeholder="Search..."
-          id="searchInput" />
+        }
+        <div
+          class="max-w-72 w-full relative transition-all duration-300 search">
+          <button
+            class="absolute left-2 top-0 mt-1 mr-3 focus:outline-none flex items-center justify-center">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="search icon"
+              fontIcon="search"
+              class="text-2xl"></mat-icon>
+          </button>
+          <input
+            type="text"
+            class="w-full px-10 py-2 border border-gray-300 rounded-lg bg-gray-100"
+            placeholder="Search..."
+            id="searchInput" />
+        </div>
       </div>
 
       <div class="flex justify-between items-center">
