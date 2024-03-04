@@ -6,16 +6,26 @@ import {
   selectFavoritesSongs,
   selectIsAlbumFavorite,
   selectIsSongFavorite
-} from '../../store/selectors';
-import { artistsActions } from '../../store/actions';
-import { AlbumListComponent } from '../../components/cards/album-list/album-list.component';
+} from '@store/selectors';
+import { artistsActions } from '@store/actions';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
 
-import { SongsListComponent } from '../../components/cards/songs-list/songs-list.component';
+import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [CommonModule, SongsListComponent, AlbumListComponent],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatTabsModule,
+    MatDividerModule,
+    SongsListComponent,
+    AlbumListComponent
+  ],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.scss'
 })

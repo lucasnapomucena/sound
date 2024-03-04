@@ -2,23 +2,33 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Album } from '../../models/artist';
-import { AlbumListComponent } from '../../components/cards/album-list/album-list.component';
-import { artistsActions } from '../../store/actions';
+import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
+import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
+import { artistsActions } from '@store/actions';
 import { Store } from '@ngrx/store';
-import {
-  selectArtistsAlbum,
-  selectIsAlbumFavorite
-} from '../../store/selectors';
-
+import { selectArtistsAlbum, selectIsAlbumFavorite } from '@store/selectors';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-albums',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, AlbumListComponent],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    RouterOutlet,
+    MatIconModule,
+    AlbumListComponent,
+    DialogAlbumComponent
+  ],
   templateUrl: './albums.component.html'
 })
 export class AlbumsComponent implements OnInit {
   store = inject(Store);
   albums$ = this.store.select(selectArtistsAlbum);
+  dialog = inject(MatDialog);
 
   onAddToFavoritesAlbum(album: Album) {
     this.store.dispatch(artistsActions.artistsAddFavoriteAlbum({ album }));
@@ -32,6 +42,25 @@ export class AlbumsComponent implements OnInit {
 
   isFavorite(albumName: string) {
     return this.store.select(selectIsAlbumFavorite(albumName));
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAlbumComponent, {
+      data: {
+        editMode: false
+      },
+      maxWidth: '50vw',
+      width: '100%'
+    });
+
+    dialogRef.afterClosed().subscribe((data) => {
+      this.store.dispatch(
+        artistsActions.artistsAddAlbum({
+          artistName: data.name,
+          album: data
+        })
+      );
+    });
   }
 
   ngOnInit(): void {

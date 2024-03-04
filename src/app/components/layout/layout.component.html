@@ -1,9 +1,11 @@
-<div class="flex w-full">
-  <app-sidebar> </app-sidebar>
-  <main>
-    <app-header></app-header>
-    <div class="px-8 py-6 relative">
-      <ng-content></ng-content>
-    </div>
-  </main>
-</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened> <app-sidebar> </app-sidebar></mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <app-header></app-header>
+      <div class="px-4 py-4 relative">
+        <ng-content></ng-content>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

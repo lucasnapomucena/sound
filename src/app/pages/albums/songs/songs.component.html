@@ -1,45 +1,65 @@
 <div class="flex flex-col">
-  <div class="flex w-full gap-16">
-    <div class="flex gap-6 flex-col max-w-80">
-      <div class="overflow-hidden rounded-full max-w-80 max-h-80 h-full w-full">
-        <img [src]="album.images" [alt]="album.title" />
-      </div>
+  <div class="flex w-full gap-6">
+    <mat-card class="p-4">
+      <mat-card-content>
+        <div class="flex gap-6 flex-col max-w-96">
+          <div
+            class="overflow-hidden rounded-full max-w-96 max-h-96 h-full w-full">
+            <img [src]="album.images" [alt]="album.title" />
+          </div>
 
-      <div class="flex flex-col">
-        <p class="text-4xl font-medium text-center">{{album.title}}</p>
-        <div class="mt-8">
-          <p class="text-sm font-bold">Album Description:</p>
-          <p class="text-xs">{{album.description}}</p>
-        </div>
-        <div class="mt-2 flex items-center gap-1">
-          <p class="text-sm font-bold">Number of songs:</p>
-          <p class="text-xs">{{album.songs.length}}</p>
-        </div>
+          <div class="flex flex-col">
+            <div class="flex gap-2 justify-center">
+              <p class="text-4xl font-medium text-center">{{album.title}}</p>
+              <button
+                type="button"
+                (click)="onEditAlbum(album)"
+                class="flex items-center gap-2 mt-2">
+                <mat-icon
+                  aria-hidden="true"
+                  aria-label="edit icon"
+                  fontIcon="edit"></mat-icon>
+              </button>
+            </div>
 
-        <div class="mt-2 flex items-center gap-1">
-          <p class="text-sm font-bold">Minutes:</p>
-          <p class="text-xs">{{minutesTotal}}</p>
-        </div>
-      </div>
-    </div>
+            <div class="mt-8">
+              <p class="text-sm font-bold">Album Description:</p>
+              <p class="text-xs">{{album.description}}</p>
+            </div>
+            <div class="mt-2 flex items-center gap-1">
+              <p class="text-sm font-bold">Number of songs:</p>
+              <p class="text-xs">{{album.songs.length}}</p>
+            </div>
 
-    <div class="flex gap-8 flex-1">
-      <div class="bg-white min-w-80 w-full">
-        <div class="mb-4">
-          <p class="text-xl font-medium">Songs</p>
-        </div>
-        <div class="bg-white min-w-80 w-full">
-          <div class="mx-auto song-list">
-            @for (song of album.songs; track album.title) {
-            <app-songs-list
-              [song]="song"
-              [addToFavorites]="onAddSongToFavorites"
-              [removeToFavorites]="onRemoveSongToFavorites"
-              [isFavorite]="isFavorite"></app-songs-list
-            >}
+            <div class="mt-2 flex items-center gap-1">
+              <p class="text-sm font-bold">Minutes:</p>
+              <p class="text-xs">{{minutesTotal}}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="w-full">
+      <mat-card-content>
+        <div class="bg-white min-w-80 w-full">
+          <div class="mb-4">
+            <p class="text-xl font-medium">Songs</p>
+          </div>
+          <div class="bg-white min-w-80 w-full">
+            <div class="mx-auto song-list">
+              @for (song of album.songs; track album.title) {
+              <app-songs-list
+                [song]="song"
+                [addToFavorites]="onAddSongToFavorites"
+                [removeToFavorites]="onRemoveSongToFavorites"
+                [isFavorite]="isFavorite"></app-songs-list>
+
+              <mat-divider></mat-divider>}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

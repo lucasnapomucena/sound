@@ -1,11 +1,21 @@
 import { createAction, props } from '@ngrx/store';
-import { Album, Artist, Song } from '../models/artist';
+import { Album, Artist, Song } from '@models/artist';
 
 const artistsLoad = createAction('[Artists] Load Artists');
 
 const artistsLoadWithSuccess = createAction(
   '[Artists] Loaded Artists Success',
   props<{ artists: Artist[] }>()
+);
+
+const artistsAddAlbum = createAction(
+  '[Artists] Add Album',
+  props<{ artistName: string; album: Album }>()
+);
+
+const artistsEditAlbum = createAction(
+  '[Artists] Edit Album',
+  props<{ artistName: string; album: Album }>()
 );
 
 const artistsAddFavoriteAlbum = createAction(
@@ -31,6 +41,8 @@ const artistsRemoveFavoriteSong = createAction(
 export const artistsActions = {
   artistsLoad,
   artistsLoadWithSuccess,
+  artistsAddAlbum,
+  artistsEditAlbum,
   artistsAddFavoriteAlbum,
   artistsRemoveFavoriteAlbum,
   artistsAddFavoriteSong,

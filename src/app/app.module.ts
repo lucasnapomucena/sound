@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from '@components/layout/layout.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducers } from './store/reducers';
-import { ArtistsEffect } from './store/effects';
+import { appReducers } from '@store/reducers';
+import { ArtistsEffect } from '@store/effects';
 import { EffectsModule } from '@ngrx/effects';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
