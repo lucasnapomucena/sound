@@ -34,22 +34,20 @@ export class FavoritesComponent implements OnInit {
   albums$ = this.store.select(selectFavoritesAlbum);
   songs$ = this.store.select(selectFavoritesSongs);
 
-  onRemoveToFavoritesAlbum(albumName: string) {
-    this.store.dispatch(
-      artistsActions.artistsRemoveFavoriteAlbum({ albumName })
-    );
+  onRemoveToFavoritesAlbum(id: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteAlbum({ id }));
   }
 
-  onRemoveToFavoritesSong(songName: string) {
-    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ songName }));
+  onRemoveToFavoritesSong(id: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ id }));
   }
 
-  isFavoriteAlbum(albumName: string) {
-    return this.store.select(selectIsAlbumFavorite(albumName));
+  isFavoriteAlbum(id: string) {
+    return this.store.select(selectIsAlbumFavorite(id));
   }
 
-  isFavoriteSong(songName: string) {
-    return this.store.select(selectIsSongFavorite(songName));
+  isFavoriteSong(id: string) {
+    return this.store.select(selectIsSongFavorite(id));
   }
 
   ngOnInit(): void {

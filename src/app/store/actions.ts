@@ -25,7 +25,7 @@ const artistsAddFavoriteAlbum = createAction(
 
 const artistsRemoveFavoriteAlbum = createAction(
   '[Favorites] Remove Album',
-  props<{ albumName: string }>()
+  props<{ id: string }>()
 );
 
 const artistsAddFavoriteSong = createAction(
@@ -35,7 +35,7 @@ const artistsAddFavoriteSong = createAction(
 
 const artistsRemoveFavoriteSong = createAction(
   '[Favorites] Remove Song',
-  props<{ songName: string }>()
+  props<{ id: string }>()
 );
 
 export const artistsActions = {

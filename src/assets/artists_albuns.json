@@ -1,73 +1,91 @@
 [
   {
+    "id": "0c300cdb-6f9a-43f0-b4d8-932beccfd1a2",
     "name": "The Weeknd",
     "image": "http://localhost:4200/assets/images/the-weeknd.png",
     "albums": [
       {
+        "id": "6fab6fc6-0396-4701-a61d-7bf6eff593c1",
         "title": "Dawn FM",
         "images": "http://localhost:4200/assets/images/dawn-fm.png",
         "songs": [
           {
+            "id": "f1bf9231-5e0d-4732-ae74-47f883b47436",
             "title": "Dawn FM",
             "duration": "1:36"
           },
           {
+            "id": "121bef2d-2a70-4904-a307-10cbe8170c20",
             "title": "Gasoline",
             "duration": "3:32"
           },
           {
+            "id": "74b19dba-8760-4ffb-bfbb-cea904da687e",
             "title": "How Do I Make You Love Me?",
             "duration": "3:34"
           },
           {
+            "id": "ebcd8d93-80b8-40f7-b7a8-e5a0e1464ed3",
             "title": "Take My Breath",
             "duration": "5:39"
           },
           {
+            "id": "e550885f-2bc3-4c7b-b8c4-4800f04adfd7",
             "title": "Sacrifice",
             "duration": "3:08"
           },
           {
+            "id": "ef5eee7e-12ef-43ea-993d-6ae8129fa7bf",
             "title": "A Tale by Quincy",
             "duration": "1:36"
           },
           {
+            "id": "96ad9dbd-9815-4b43-83d5-403ea8a13057",
             "title": "Out of Time",
             "duration": "3:34"
           },
           {
+            "id": "573296ac-ba52-47b7-accc-dfc9cd3ff0a8",
             "title": "Here We Go... Again",
             "duration": "3:29"
           },
           {
+            "id": "f3cd073b-c2a0-402e-baad-9a8c911beffb",
             "title": "Best Friends",
             "duration": "2:43"
           },
           {
+            "id": "fb347208-aaf3-4696-a325-5aaf8e8c5ca7",
             "title": "Is There Someone Else?",
             "duration": "3:19"
           },
           {
+            "id": "29e0420e-410b-49df-b484-2323eac3e6e0",
             "title": "Starry Eyes",
             "duration": "2:28"
           },
           {
+            "id": "435da293-8993-48a8-b6f7-f849f8b6e5b8",
             "title": "Every Angel Is Terrifying",
             "duration": "2:47"
           },
           {
+            "id": "b67f9482-6c40-47ea-88fd-0f4a86268f1d",
             "title": "Don't Break My Heart",
             "duration": "3:25"
           },
           {
+            "id": "713b02c1-be49-4e64-a088-1b959d92a0b4",
             "title": "I Heard You're Married",
             "duration": "4:23"
           },
           {
+            "id": "2930fd0d-42ef-4b68-8c6e-053ae5070fdb",
             "title": "Less than Zero",
             "duration": "3:31"
           },
           {
+            "id": "b2412e1d-0d59-4968-bed6-599c22c9b8a7",
             "title": "Phantom Regret by Jim",
             "duration": "2:59"
           }
@@ -77,42 +95,52 @@
     ]
   },
   {
+    "id": "19e84b85-2feb-4d51-810f-4b2bfb71e642",
     "name": "Radiohead",
     "image": "http://localhost:4200/assets/images/radiohead.png",
     "albums": [
       {
+        "id": "a8758015-e0ca-4a53-ba2c-d38379d0f7d0",
         "title": "The King of Limbs",
         "images": "http://localhost:4200/assets/images/the-king-of-limbs.png",
         "songs": [
           {
+            "id": "4b557ef2-9003-4bb6-a924-8d39a308b5cd",
             "title": "Bloom",
             "duration": "5:15"
           },
           {
+            "id": "6c73d6aa-b921-49ac-857a-da9455997756",
             "title": "Morning Mr Magpie",
             "duration": "4:41"
           },
           {
+            "id": "c56d6078-281a-4917-b701-316dd871c6dc",
             "title": "Little by Little",
             "duration": "4:27"
           },
           {
+            "id": "b8b390a8-90dc-4e5a-9973-6f2738dd50f9",
             "title": "Feral",
             "duration": "3:13"
           },
           {
+            "id": "02b81a19-3dc5-4016-a2df-a0ab7795a394",
             "title": "Lotus Flower",
             "duration": "5:01"
           },
           {
+            "id": "988355f1-1074-4c94-b5ee-1afbc5615279",
             "title": "Codex",
             "duration": "4:47"
           },
           {
+            "id": "a8677813-2990-47d5-8e3f-29f00f501b4f",
             "title": "Give Up the Ghost",
             "duration": "4:50"
           },
           {
+            "id": "1680e030-1d24-4744-9e1b-ce3750dc5019",
             "title": "Separator",
             "duration": "5:20"
           }
@@ -120,54 +148,67 @@
         "description": "The King of Limbs is the eighth studio album by English rock band Radiohead, produced by Nigel Godrich. It was self-released on 18 February 2011 as a download in MP3 and WAV formats, followed by physical CD and 12 vinyl releases on 28 March, a wider digital release via AWAL, and a special \"newspaper\" edition on 9 May 2011. The physical editions were released through the band's Ticker Tape imprint on XL in the United Kingdom, TBD in the United States, and Hostess Entertainment in Japan."
       },
       {
+        "id": "d31a2205-854f-4f65-add4-c7becbefa5a5",
         "title": "OK Computer",
         "images": "http://localhost:4200/assets/images/ok-computer-radiohead.png",
         "songs": [
           {
+            "id": "f47a70b3-1320-482a-bb4f-f341a7a705f3",
             "title": "Airbag",
             "duration": "4:44"
           },
           {
+            "id": "b6543c76-9ad5-4e83-9a3d-be0d2e5899f3",
             "title": "Paranoid Android",
             "duration": "6:23"
           },
           {
+            "id": "b1a0280b-572b-4f16-b794-ffcb6ea6305d",
             "title": "Subterranean Homesick Alien",
             "duration": "4:27"
           },
           {
+            "id": "78628c69-3d3f-41e2-9917-b9da1ce2e566",
             "title": "Exit Music (For a Film)",
             "duration": "4:24"
           },
           {
+            "id": "a1cfae3e-b83f-44c4-8040-a70f2e94b769",
             "title": "Let Down",
             "duration": "4:59"
           },
           {
+            "id": "01bebbd5-8bc5-4916-98bd-a369ebdac525",
             "title": "Karma Police",
             "duration": "4:21"
           },
           {
+            "id": "9b31fa9d-c314-43fc-a115-fd9383dc6c93",
             "title": "Fitter Happier",
             "duration": "1:57"
           },
           {
+            "id": "ef1b07b1-e4d5-4ebe-8dd3-94b1f51d7f8d",
             "title": "Electioneering",
             "duration": "3:50"
           },
           {
+            "id": "b1e38e46-56b1-45f3-8e2d-67a7f70ee921",
             "title": "Climbing Up the Walls",
             "duration": "4:45"
           },
           {
+            "id": "3617c2c1-de42-4a56-876f-2a2072970a2c",
             "title": "No Surprises",
             "duration": "3:48"
           },
           {
+            "id": "5c2a648f-bad6-417f-93af-ec159a0dd683",
             "title": "Lucky",
             "duration": "4:19"
           },
           {
+            "id": "ebdc7a9b-db20-4fa3-8652-085400251ff7",
             "title": "The Tourist",
             "duration": "5:24"
           }
@@ -177,54 +218,67 @@
     ]
   },
   {
+    "id": "ce1a5cb7-13b4-4608-a7bc-ace90d5104b5",
     "name": "Portishead",
     "image": "http://localhost:4200/assets/images/portishead.png",
     "albums": [
       {
+        "id": "1ed361d7-9ae9-4ff5-ac58-e1de53c35eea",
         "title": "Dummy",
         "images": "http://localhost:4200/assets/images/portishead-dummy.png",
         "songs": [
           {
+            "id": "7a588267-5055-45c7-8095-0e5d28ad1728",
             "title": "Mysterons",
             "duration": "5:02"
           },
           {
+            "id": "a1c8f96d-56a2-4e1d-8192-f1e877dd5e36",
             "title": "Sour Times",
             "duration": "4:11"
           },
           {
+            "id": "c88932a5-e21e-48b4-b4f0-3b78c0e15c3a",
             "title": "Strangers",
             "duration": "3:55"
           },
           {
+            "id": "a5b2d819-9f42-48d5-9b50-1e6541c9f5b9",
             "title": "It Could Be Sweet",
             "duration": "4:16"
           },
           {
+            "id": "7958d3a6-aa1c-45b3-bb79-9a30a5dc68d6",
             "title": "Wandering Star",
             "duration": "4:51"
           },
           {
+            "id": "0d8ec5b9-4b53-42c4-96a6-f722df9b6e34",
             "title": "It's a Fire",
             "duration": "3:49"
           },
           {
+            "id": "bd77503d-93e3-41e6-8a38-4081f2573eac",
             "title": "Numb",
             "duration": "3:54"
           },
           {
+            "id": "eb0d154e-58cd-46a7-b682-7507afbf0458",
             "title": "Roads",
             "duration": "5:02"
           },
           {
+            "id": "d6b99814-9c7c-48bc-a1a8-9a021dbf0f2b",
             "title": "Pedestal",
             "duration": "3:39"
           },
           {
+            "id": "bbf6a3a7-0762-46d8-90d2-23b3c6e69be5",
             "title": "Biscuit",
             "duration": "5:01"
           },
           {
+            "id": "22f019ec-8766-44db-a2df-366e5f711f8a",
             "title": "Glory Box",
             "duration": "5:06"
           }
@@ -232,50 +286,62 @@
         "description": "Dummy is the debut album of the Bristol-based group Portishead. Released in August 22, 1994 on Go! Discs, the album earned critical acclaim, winning the 1995 Mercury Music Prize. It is often credited with popularizing the trip-hop genre and is frequently cited in lists of the best albums of the 1990s. Although it achieved modest chart success overseas, it peaked at #2 on the UK Album Chart and saw two of its three singles reach #13. The album was certified gold in 1997 and has sold two million copies in Europe. As of September 2011, the album was certified double-platinum in the United Kingdom and has sold as of September 2011 825,000 copies."
       },
       {
+        "id": "d5f14308-f8c3-4a07-a763-cc5193ea741e",
         "title": "Third",
         "images": "http://localhost:4200/assets/images/third-portishead.png",
         "songs": [
           {
+            "id": "e2f92f5f-3501-4bbf-b4d5-4bfce810d8cb",
             "title": "Silence",
             "duration": "4:58"
           },
           {
+            "id": "234b573e-c68b-4f5c-b141-0ab9e8c1609d",
             "title": "Hunter",
             "duration": "3:57"
           },
           {
+            "id": "a6d7fd67-0e2d-40c3-9670-c3b650e5f21e",
             "title": "Nylon Smile",
             "duration": "3:16"
           },
           {
+            "id": "70fb2374-3a9b-42bb-9d17-b180b792f1a3",
             "title": "The Rip",
             "duration": "4:29"
           },
           {
+            "id": "7857e4c4-4d5c-43fd-a8ff-8c1c8f29f593",
             "title": "Plastic",
             "duration": "3:27"
           },
           {
+            "id": "f5beec36-7aa8-4c3a-a1ec-6a11d7224abf",
             "title": "We Carry On",
             "duration": "6:27"
           },
           {
+            "id": "7d238e27-5001-4522-99c1-d2245d5c73a0",
             "title": "Deep Water",
             "duration": "1:31"
           },
           {
+            "id": "3e5c3a95-0dd1-4c9f-8dc9-828a01d5b5cc",
             "title": "Machine Gun",
             "duration": "4:43"
           },
           {
+            "id": "d3892de7-5b8c-4970-9af1-2f0dd4d460d8",
             "title": "Small",
             "duration": "6:45"
           },
           {
+            "id": "af23fdd7-1297-4a6e-9daa-dc8eb08dc0f3",
             "title": "Magic Doors",
             "duration": "3:32"
           },
           {
+            "id": "b5b4e509-e3fc-4a7a-8b86-7de3cc88d58a",
             "title": "Threads",
             "duration": "5:45"
           }

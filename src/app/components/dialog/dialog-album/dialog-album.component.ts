@@ -1,6 +1,12 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  CdkDragDrop,
+  CdkDropList,
+  CdkDrag,
+  moveItemInArray
+} from '@angular/cdk/drag-drop';
+import {
   MatDialogTitle,
   MatDialogContent,
   MatDialogActions,
@@ -23,7 +29,7 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectArtistsList } from '@store/selectors';
-import { Album } from '@models/artist';
+import { Album, Song } from '@models/artist';
 interface IDialogAlbumComponent {
   data: Album;
   editMode: boolean;
@@ -43,7 +49,9 @@ interface IDialogAlbumComponent {
     MatSelectModule,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose
+    MatDialogClose,
+    CdkDropList,
+    CdkDrag
   ],
   templateUrl: './dialog-album.component.html',
   styleUrl: './dialog-album.component.scss'
@@ -57,6 +65,7 @@ export class DialogAlbumComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public props: IDialogAlbumComponent) {}
 
   form: FormGroup = this.fb.group({
+    id: [''],
     name: ['', [Validators.required]],
     title: ['', [Validators.required, Validators.minLength(3)]],
     images: ['', [Validators.required, Validators.pattern('https?://.+')]],
@@ -82,10 +91,7 @@ export class DialogAlbumComponent implements OnInit {
     songs.push(
       this.fb.group({
         title: ['', Validators.required],
-        duration: [
-          '',
-          [Validators.required, Validators.pattern('^[0-9]+:[0-5][0-9]$')]
-        ]
+        duration: ['', [Validators.pattern('^[0-9]+:[0-5][0-9]$')]]
       })
     );
   }
@@ -101,7 +107,19 @@ export class DialogAlbumComponent implements OnInit {
       return;
     }
 
-    this.dialogRef.close(this.form.value);
+    this.dialogRef.close(this.form.getRawValue());
+  }
+  drop(event: CdkDragDrop<Song[]>) {
+    moveItemInArray(
+      this.songsFields.controls,
+      event.previousIndex,
+      event.currentIndex
+    );
+
+    const newSongsOrder = [...this.songsFields.value];
+    moveItemInArray(newSongsOrder, event.previousIndex, event.currentIndex);
+
+    this.songsFields.patchValue(newSongsOrder);
   }
 
   ngOnInit() {
@@ -115,6 +133,8 @@ export class DialogAlbumComponent implements OnInit {
         ...this.props.data,
         songs: songsFormArray.value
       });
+
+      this.form.controls['name'].disable();
     }
   }
 }

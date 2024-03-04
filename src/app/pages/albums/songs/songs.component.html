@@ -4,8 +4,35 @@
       <mat-card-content>
         <div class="flex gap-6 flex-col max-w-96">
           <div
-            class="overflow-hidden rounded-full max-w-96 max-h-96 h-full w-full">
-            <img [src]="album.images" [alt]="album.title" />
+            class="relative overflow-hidden rounded-full max-w-96 max-h-96 h-full w-full">
+            <img
+              [src]="album.images"
+              [alt]="album.title"
+              style="aspect-ratio: 1/1" />
+
+            <div
+              class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-20 flex items-center justify-center flex-col">
+              @if(isFavoriteAlbum(album.id) | async) {
+              <button
+                class="p-2 w-10 h-10 bg-white rounded-full"
+                (click)="onRemoveToFavoritesAlbum(album.id)">
+                <mat-icon
+                  aria-hidden="true"
+                  aria-label="favorite icon"
+                  fontIcon="favorite"
+                  color="accent"></mat-icon>
+              </button>
+              } @else {
+              <button
+                class="p-2 w-10 h-10 bg-white rounded-full"
+                (click)="onAddToFavoritesAlbum(album)">
+                <mat-icon
+                  aria-hidden="true"
+                  aria-label="favorite icon"
+                  fontIcon="favorite_border"></mat-icon>
+              </button>
+              }
+            </div>
           </div>
 
           <div class="flex flex-col">
@@ -55,7 +82,9 @@
                 [removeToFavorites]="onRemoveSongToFavorites"
                 [isFavorite]="isFavorite"></app-songs-list>
 
-              <mat-divider></mat-divider>}
+              @if(song !== album.songs[album.songs.length - 1]) {
+              <mat-divider></mat-divider>
+              } }
             </div>
           </div>
         </div>

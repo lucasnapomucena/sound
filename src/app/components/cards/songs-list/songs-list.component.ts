@@ -15,6 +15,6 @@ export class SongsListComponent {
   store = inject(Store);
   @Input() song!: Song;
   @Input() addToFavorites!: (song: Song) => void;
-  @Input() removeToFavorites!: (songName: string) => void;
-  @Input() isFavorite!: (songName: string) => Observable<boolean>;
+  @Input() removeToFavorites!: (id: string) => void;
+  @Input() isFavorite!: (id: string) => Observable<boolean>;
 }
