@@ -12,7 +12,11 @@ import { Album, Artist } from '@models/artist';
 import { Store } from '@ngrx/store';
 import { Favorites } from '@shared/helpers/favorites';
 import { artistsActions } from '@store/actions';
-import { selectArtistByAlbumId, selectArtistsSongs } from '@store/selectors';
+import {
+  selectArtistByAlbumId,
+  selectArtists,
+  selectArtistsSongs
+} from '@store/selectors';
 import { firstValueFrom, map, Observable, switchMap } from 'rxjs';
 
 @Component({
@@ -72,7 +76,11 @@ export class SongsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(artistsActions.artistsLoad());
+    this.store.select(selectArtists).subscribe((data) => {
+      if (data.length <= 0) {
+        this.store.dispatch(artistsActions.artistsLoad());
+      }
+    });
     this.album$.subscribe((album) => {
       if (album) {
         this.album = album;

@@ -108,6 +108,8 @@ export class DialogAlbumComponent implements OnInit {
       return;
     }
 
+    console.log(this.form.getRawValue(), 'this.form.getRawValue()');
+
     this.dialogRef.close(this.form.getRawValue());
   }
   drop(event: CdkDragDrop<Song[]>) {
