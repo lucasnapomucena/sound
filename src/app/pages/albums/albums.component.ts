@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
 import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
-import { artistsActions } from '@store/actions';
 import { Store } from '@ngrx/store';
-import { selectArtistsAlbum } from '@store/selectors';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
 import { Favorites } from '@shared/helpers/favorites';
+import { artistsActions } from '@store/actions';
+import { selectArtistsAlbum } from '@store/selectors';
+
 @Component({
   selector: 'app-albums',
   standalone: true,
@@ -36,7 +37,7 @@ export class AlbumsComponent implements OnInit {
       data: {
         editMode: false
       },
-      maxWidth: '50vw',
+      maxWidth: '600px',
       width: '100%'
     });
 

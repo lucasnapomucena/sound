@@ -1,9 +1,9 @@
-import { Component, Input, inject } from '@angular/core';
-import { Song } from '@models/artist';
 import { CommonModule } from '@angular/common';
+import { Component, inject, Input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { Song } from '@models/artist';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-songs-list',

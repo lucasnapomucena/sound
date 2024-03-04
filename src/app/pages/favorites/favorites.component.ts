@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectFavoritesAlbum, selectFavoritesSongs } from '@store/selectors';
-import { artistsActions } from '@store/actions';
-import { MatTabsModule } from '@angular/material/tabs';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
-
 import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
+import { Store } from '@ngrx/store';
 import { Favorites } from '@shared/helpers/favorites';
+import { artistsActions } from '@store/actions';
+import { selectFavoritesAlbum, selectFavoritesSongs } from '@store/selectors';
 
 @Component({
   selector: 'app-favorites',

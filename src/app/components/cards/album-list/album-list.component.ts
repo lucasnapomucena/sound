@@ -1,10 +1,11 @@
-import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Album } from '@models/artist';
+import { Component, inject, Input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { Album } from '@models/artist';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { MatIconModule } from '@angular/material/icon';
+
 @Component({
   selector: 'app-album-list',
   standalone: true,

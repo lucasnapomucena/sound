@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
 import { Album, Artist, Song } from '@models/artist';
+import { createAction, props } from '@ngrx/store';
 
 const artistsLoad = createAction('[Artists] Load Artists');
 

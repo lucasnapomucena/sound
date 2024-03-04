@@ -1,19 +1,19 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Album, Artist } from '@models/artist';
 import { CommonModule } from '@angular/common';
-import { Observable, firstValueFrom, map, switchMap } from 'rxjs';
-import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
-import { artistsActions } from '@store/actions';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { Store } from '@ngrx/store';
-import { selectArtistByAlbumId, selectArtistsSongs } from '@store/selectors';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SongsListComponent } from '@components/cards/songs-list/songs-list.component';
 import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
+import { Album, Artist } from '@models/artist';
+import { Store } from '@ngrx/store';
 import { Favorites } from '@shared/helpers/favorites';
+import { artistsActions } from '@store/actions';
+import { selectArtistByAlbumId, selectArtistsSongs } from '@store/selectors';
+import { firstValueFrom, map, Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-songs',

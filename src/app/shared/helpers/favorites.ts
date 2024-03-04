@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Album, Song } from '@models/artist';
 import { Store } from '@ngrx/store';
 import { artistsActions } from '@store/actions';

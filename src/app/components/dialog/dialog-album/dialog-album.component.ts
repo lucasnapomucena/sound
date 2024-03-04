@@ -1,35 +1,36 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
+  CdkDrag,
   CdkDragDrop,
   CdkDropList,
-  CdkDrag,
   moveItemInArray
 } from '@angular/cdk/drag-drop';
+import { CommonModule } from '@angular/common';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import {
-  MatDialogTitle,
-  MatDialogContent,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
+  MatDialogContent,
   MatDialogRef,
-  MAT_DIALOG_DATA
+  MatDialogTitle
 } from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
-import {
-  FormsModule,
-  FormBuilder,
-  Validators,
-  ReactiveFormsModule,
-  FormArray,
-  FormGroup
-} from '@angular/forms';
+import { Album, Song } from '@models/artist';
 import { Store } from '@ngrx/store';
 import { selectArtistsList } from '@store/selectors';
-import { Album, Song } from '@models/artist';
+
 interface IDialogAlbumComponent {
   data: Album;
   editMode: boolean;
