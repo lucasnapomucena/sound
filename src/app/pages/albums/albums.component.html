@@ -17,9 +17,9 @@
 
         <app-album-list
           [album]="album"
-          [addToFavorites]="onAddToFavoritesAlbum"
-          [removeToFavorites]="onRemoveToFavoritesAlbum"
-          [isFavorite]="isFavorite"></app-album-list>
+          [addToFavorites]="favorites.onAddToFavoritesAlbum"
+          [removeToFavorites]="favorites.onRemoveToFavoritesAlbum"
+          [isFavorite]="favorites.isFavoriteAlbum"></app-album-list>
         }
       </div>
     </div>

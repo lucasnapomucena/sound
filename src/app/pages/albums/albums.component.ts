@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Album } from '../../models/artist';
 import { AlbumListComponent } from '@components/cards/album-list/album-list.component';
 import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
 import { artistsActions } from '@store/actions';
 import { Store } from '@ngrx/store';
-import { selectArtistsAlbum, selectIsAlbumFavorite } from '@store/selectors';
+import { selectArtistsAlbum } from '@store/selectors';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { Favorites } from '@shared/helpers/favorites';
 @Component({
   selector: 'app-albums',
   standalone: true,
@@ -29,18 +29,7 @@ export class AlbumsComponent implements OnInit {
   store = inject(Store);
   albums$ = this.store.select(selectArtistsAlbum);
   dialog = inject(MatDialog);
-
-  onAddToFavoritesAlbum(album: Album) {
-    this.store.dispatch(artistsActions.artistsAddFavoriteAlbum({ album }));
-  }
-
-  onRemoveToFavoritesAlbum(id: string) {
-    this.store.dispatch(artistsActions.artistsRemoveFavoriteAlbum({ id }));
-  }
-
-  isFavorite(id: string) {
-    return this.store.select(selectIsAlbumFavorite(id));
-  }
+  favorites = inject(Favorites);
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAlbumComponent, {
