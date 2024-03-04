@@ -1,7 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { ArtistService } from '@services/artist.service';
 import { map, switchMap } from 'rxjs';
-import { ArtistService } from '../services/artist.service';
+
 import { artistsActions } from './actions';
 
 @Injectable()

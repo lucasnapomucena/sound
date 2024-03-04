@@ -1,6 +1,7 @@
 import { createSelector } from '@ngrx/store';
-import { IAppState } from './states';
+
 import { Artist } from '../models/artist';
+import { IAppState } from './states';
 
 export const selectArtists = (state: IAppState): Artist[] =>
   state.artists.artists;
