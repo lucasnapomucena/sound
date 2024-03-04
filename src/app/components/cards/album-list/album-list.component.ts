@@ -16,6 +16,6 @@ export class AlbumListComponent {
   store = inject(Store);
   @Input() album!: Album;
   @Input({ required: false }) addToFavorites!: (album: Album) => void;
-  @Input() removeToFavorites!: (albumName: string) => void;
-  @Input() isFavorite!: (albumName: string) => Observable<boolean>;
+  @Input() removeToFavorites!: (id: string) => void;
+  @Input() isFavorite!: (id: string) => Observable<boolean>;
 }

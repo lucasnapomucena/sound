@@ -5,6 +5,6 @@ import { FavoritesComponent } from '@pages/favorites/favorites.component';
 
 export const routes: Routes = [
   { path: '', component: AlbumsComponent },
-  { path: 'albums/:name', component: SongsComponent },
+  { path: 'albums/:id', component: SongsComponent },
   { path: 'favorites', component: FavoritesComponent }
 ];

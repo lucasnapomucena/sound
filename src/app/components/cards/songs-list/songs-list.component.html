@@ -6,9 +6,9 @@
     </div>
   </div>
 
-  @if(isFavorite(song.title) | async) {
+  @if(isFavorite(song.id) | async) {
   <button
-    (click)="removeToFavorites(song.title)"
+    (click)="removeToFavorites(song.id)"
     class="flex items-center justify-center">
     <mat-icon
       aria-hidden="true"

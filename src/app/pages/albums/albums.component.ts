@@ -34,14 +34,12 @@ export class AlbumsComponent implements OnInit {
     this.store.dispatch(artistsActions.artistsAddFavoriteAlbum({ album }));
   }
 
-  onRemoveToFavoritesAlbum(albumName: string) {
-    this.store.dispatch(
-      artistsActions.artistsRemoveFavoriteAlbum({ albumName })
-    );
+  onRemoveToFavoritesAlbum(id: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteAlbum({ id }));
   }
 
-  isFavorite(albumName: string) {
-    return this.store.select(selectIsAlbumFavorite(albumName));
+  isFavorite(id: string) {
+    return this.store.select(selectIsAlbumFavorite(id));
   }
 
   openDialog(): void {

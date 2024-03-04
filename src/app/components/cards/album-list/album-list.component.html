@@ -8,10 +8,10 @@
 
     <div
       class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-20 flex items-center justify-center flex-col">
-      @if(isFavorite(album.title) | async) {
+      @if(isFavorite(album.id) | async) {
       <button
         class="p-2 w-10 h-10 bg-white rounded-full"
-        (click)="removeToFavorites(album.title)">
+        (click)="removeToFavorites(album.id)">
         <mat-icon
           aria-hidden="true"
           aria-label="favorite icon"
@@ -35,7 +35,7 @@
   </div>
   <div class="mt-4">
     <p class="text-xl font-bold text-center">
-      <a [routerLink]="['/albums/', album.title]" [title]="album.title"
+      <a [routerLink]="['/albums/', album.id]" [title]="album.title"
         >{{ album.title }}</a
       >
     </p>

@@ -10,8 +10,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { Store } from '@ngrx/store';
 import {
-  selectArtistByAlbumName,
+  selectArtistByAlbumId,
   selectArtistsSongs,
+  selectIsAlbumFavorite,
   selectIsSongFavorite
 } from '@store/selectors';
 import { MatIconModule } from '@angular/material/icon';
@@ -39,32 +40,43 @@ export class SongsComponent implements OnInit {
   dialog = inject(MatDialog);
 
   album$ = this.route.params.pipe(
-    map((params) => params['name']),
-    switchMap((name) => this.store.select(selectArtistsSongs(name)))
+    map((params) => params['id']),
+    switchMap((id) => this.store.select(selectArtistsSongs(id)))
   );
-
   album!: Album;
   minutesTotal: string = '';
+
+  onAddToFavoritesAlbum(album: Album) {
+    this.store.dispatch(artistsActions.artistsAddFavoriteAlbum({ album }));
+  }
+
+  onRemoveToFavoritesAlbum(id: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteAlbum({ id }));
+  }
+
+  isFavoriteAlbum(id: string) {
+    return this.store.select(selectIsAlbumFavorite(id));
+  }
 
   onAddSongToFavorites(song: Song) {
     this.store.dispatch(artistsActions.artistsAddFavoriteSong({ song }));
   }
 
-  onRemoveSongToFavorites(songName: string) {
-    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ songName }));
+  onRemoveSongToFavorites(id: string) {
+    this.store.dispatch(artistsActions.artistsRemoveFavoriteSong({ id }));
   }
 
-  isFavorite(songName: string) {
-    return this.store.select(selectIsSongFavorite(songName));
+  isFavorite(id: string) {
+    return this.store.select(selectIsSongFavorite(id));
   }
 
-  onSelectArtistByAlbumName(albumName: string): Observable<Artist | undefined> {
-    return this.store.select(selectArtistByAlbumName(albumName));
+  onSelectArtistByAlbumId(id: string): Observable<Artist | undefined> {
+    return this.store.select(selectArtistByAlbumId(id));
   }
 
   async onEditAlbum(album: Album) {
     const artistName = await firstValueFrom(
-      this.onSelectArtistByAlbumName(album.title)
+      this.onSelectArtistByAlbumId(album.id)
     );
 
     const dialogRef = this.dialog.open(DialogAlbumComponent, {
@@ -77,6 +89,7 @@ export class SongsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((props) => {
+      console.log(props, 'props');
       this.store.dispatch(
         artistsActions.artistsEditAlbum({
           artistName: props.name,
@@ -91,7 +104,6 @@ export class SongsComponent implements OnInit {
     this.album$.subscribe((album) => {
       if (album) {
         this.album = album;
-
         const minutesTotal = album.songs.reduce((acc, song) => {
           return acc + parseFloat(song.duration.replace(':', '.'));
         }, 0);

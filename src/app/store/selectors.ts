@@ -15,20 +15,15 @@ export const selectArtistsList = createSelector(selectArtists, (state) =>
   state.map((artist) => artist.name)
 );
 
-export const selectArtistsName = (artistName: string) =>
-  createSelector(selectArtists, (state) =>
-    state.filter((artist) => artist.name === artistName)
-  );
-
-export const selectArtistsSongs = (albumName: string) =>
+export const selectArtistsSongs = (id: string) =>
   createSelector(selectArtistsAlbum, (state) =>
-    state.find((album) => album.title === albumName)
+    state.find((album) => album.id === id)
   );
 
-export const selectArtistByAlbumName = (albumName: string) =>
+export const selectArtistByAlbumId = (id: string) =>
   createSelector(selectArtists, (state) => {
     for (const artist of state) {
-      if (artist.albums.some((album) => album.title === albumName)) {
+      if (artist.albums.some((album) => album.id === id)) {
         return artist;
       }
     }
@@ -50,12 +45,12 @@ export const selectFavoritesTotal = createSelector(
   (state) => state.album.length + state.song.length
 );
 
-export const selectIsAlbumFavorite = (albumName: string) =>
+export const selectIsAlbumFavorite = (id: string) =>
   createSelector(selectFavorites, (state) =>
-    state.album.some((album) => album.title === albumName)
+    state.album.some((album) => album.id === id)
   );
 
-export const selectIsSongFavorite = (songName: string) =>
+export const selectIsSongFavorite = (id: string) =>
   createSelector(selectFavorites, (state) =>
-    state.song.some((song) => song.title === songName)
+    state.song.some((song) => song.id === id)
   );

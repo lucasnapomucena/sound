@@ -41,7 +41,7 @@ export const artistsReducer = createReducer(
           return {
             ...artist,
             albums: artist.albums.map((album) => {
-              if (album.title === albumtObj.album.title) {
+              if (album.id === albumtObj.album.id) {
                 return {
                   ...album,
                   ...albumtObj.album
@@ -66,10 +66,10 @@ export const favoritesReducer = createReducer(
     };
   }),
 
-  on(artistsActions.artistsRemoveFavoriteAlbum, (state, albumName) => {
+  on(artistsActions.artistsRemoveFavoriteAlbum, (state, obj) => {
     return {
       ...state,
-      album: state.album.filter((album) => album.title !== albumName.albumName)
+      album: state.album.filter((album) => album.id !== obj.id)
     };
   }),
   on(artistsActions.artistsAddFavoriteSong, (state, songObj) => {
@@ -79,10 +79,10 @@ export const favoritesReducer = createReducer(
     };
   }),
 
-  on(artistsActions.artistsRemoveFavoriteSong, (state, songName) => {
+  on(artistsActions.artistsRemoveFavoriteSong, (state, obj) => {
     return {
       ...state,
-      song: state.song.filter((song) => song.title !== songName.songName)
+      song: state.song.filter((song) => song.id !== obj.id)
     };
   })
 );

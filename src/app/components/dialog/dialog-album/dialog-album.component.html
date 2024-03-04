@@ -29,11 +29,22 @@
 
     <h2>Songs</h2>
 
-    <div class="border p-4" formArrayName="songs">
+    <div
+      class="border p-4"
+      formArrayName="songs"
+      cdkDropList
+      (cdkDropListDropped)="drop($event)">
       <div
         *ngFor="let song of songsFields.controls; let i = index"
         [formGroupName]="i">
-        <div class="w-full flex gap-4">
+        <div class="w-full flex gap-4 items-center" cdkDrag>
+          <button type="button">
+            <mat-icon
+              aria-hidden="true"
+              aria-label="drag_indicator icon"
+              fontIcon="drag_indicator"></mat-icon>
+          </button>
+
           <mat-form-field [floatLabel]="'always'" class="w-full">
             <mat-label>Song Name</mat-label>
             <input matInput placeholder="Ex. Dawn FM" formControlName="title" />
