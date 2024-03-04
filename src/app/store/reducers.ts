@@ -1,5 +1,5 @@
 import { ActionReducerMap, createReducer, on } from '@ngrx/store';
-
+import { v4 as uuidv4 } from 'uuid';
 import { artistsActions } from './actions';
 import {
   ArtistState,
@@ -34,7 +34,7 @@ export const artistsReducer = createReducer<ArtistState>(
         if (artist.name === albumtObj.artistName) {
           return {
             ...artist,
-            albums: [...artist.albums, albumtObj.album]
+            albums: [...artist.albums, { ...albumtObj.album, id: uuidv4() }]
           };
         }
         return artist;

@@ -10,7 +10,7 @@ import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-alb
 import { Store } from '@ngrx/store';
 import { Favorites } from '@shared/helpers/favorites';
 import { artistsActions } from '@store/actions';
-import { selectArtistsAlbum } from '@store/selectors';
+import { selectArtists, selectArtistsAlbum } from '@store/selectors';
 
 @Component({
   selector: 'app-albums',
@@ -52,6 +52,10 @@ export class AlbumsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(artistsActions.artistsLoad());
+    this.store.select(selectArtists).subscribe((data) => {
+      if (data.length <= 0) {
+        this.store.dispatch(artistsActions.artistsLoad());
+      }
+    });
   }
 }
