@@ -8,7 +8,11 @@ import { SongsListComponent } from '@components/cards/songs-list/songs-list.comp
 import { Store } from '@ngrx/store';
 import { Favorites } from '@shared/helpers/favorites';
 import { artistsActions } from '@store/actions';
-import { selectFavoritesAlbum, selectFavoritesSongs } from '@store/selectors';
+import {
+  selectArtists,
+  selectFavoritesAlbum,
+  selectFavoritesSongs
+} from '@store/selectors';
 
 @Component({
   selector: 'app-favorites',
@@ -31,6 +35,10 @@ export class FavoritesComponent implements OnInit {
   favorites = inject(Favorites);
 
   ngOnInit(): void {
-    this.store.dispatch(artistsActions.artistsLoad());
+    this.store.select(selectArtists).subscribe((data) => {
+      if (data.length <= 0) {
+        this.store.dispatch(artistsActions.artistsLoad());
+      }
+    });
   }
 }

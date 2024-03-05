@@ -16,7 +16,10 @@
 
     <mat-form-field class="w-full" [floatLabel]="'always'">
       <mat-label>Image URL</mat-label>
-      <input matInput placeholder="Ex. https://" formControlName="images" />
+      <input
+        matInput
+        placeholder="Ex. https://upload.wikimedia.org/wikipedia/pt/b/bf/TheBends.jpg"
+        formControlName="images" />
     </mat-form-field>
 
     <mat-form-field class="w-full" [floatLabel]="'always'">
@@ -47,12 +50,15 @@
 
           <mat-form-field [floatLabel]="'always'" class="w-full">
             <mat-label>Song Name</mat-label>
-            <input matInput placeholder="Ex. Dawn FM" formControlName="title" />
+            <input
+              matInput
+              placeholder="Ex. We are the world"
+              formControlName="title" />
           </mat-form-field>
 
           <mat-form-field [floatLabel]="'always'" class="w-full">
-            <mat-label>Size</mat-label>
-            <input matInput placeholder="04:20" formControlName="duration" />
+            <mat-label>Duration</mat-label>
+            <input matInput placeholder="03:50" formControlName="duration" />
           </mat-form-field>
 
           <button type="button" (click)="removeSong(i)">
