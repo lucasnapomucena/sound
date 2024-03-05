@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectArtistsAlbum, selectFavoritesTotal } from '@store/selectors';
 import { AsyncPipe } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';

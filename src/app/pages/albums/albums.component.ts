@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { Favorites } from '@shared/helpers/favorites';
 import { artistsActions } from '@store/actions';
 import { selectArtists, selectArtistsAlbum } from '@store/selectors';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-albums',
@@ -21,6 +22,7 @@ import { selectArtists, selectArtistsAlbum } from '@store/selectors';
     MatButtonModule,
     RouterOutlet,
     MatIconModule,
+    MatTooltipModule,
     AlbumListComponent,
     DialogAlbumComponent
   ],

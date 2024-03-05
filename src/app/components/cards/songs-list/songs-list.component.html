@@ -1,31 +1,31 @@
 <div class="flex items-center justify-between py-2 px-4">
   <div class="flex items-center">
+    @if(isFavorite(song.id) | async) {
+    <button
+      (click)="removeToFavorites(song.id)"
+      class="flex items-center justify-center">
+      <mat-icon
+        aria-hidden="true"
+        aria-label="favorite icon"
+        fontIcon="favorite"
+        color="accent"></mat-icon>
+    </button>
+
+    } @else {
+    <button
+      (click)="addToFavorites(song)"
+      class="flex items-center justify-center">
+      <mat-icon
+        aria-hidden="true"
+        aria-label="favorite icon"
+        fontIcon="favorite_border"
+        class="text-xl"></mat-icon>
+    </button>
+    }
+
     <div class="ml-3">
       <p class="text-sm">{{song.title}}</p>
       <p class="text-xs text-gray-500">{{song.duration}}</p>
     </div>
   </div>
-
-  @if(isFavorite(song.id) | async) {
-  <button
-    (click)="removeToFavorites(song.id)"
-    class="flex items-center justify-center">
-    <mat-icon
-      aria-hidden="true"
-      aria-label="favorite icon"
-      fontIcon="favorite"
-      color="accent"></mat-icon>
-  </button>
-
-  } @else {
-  <button
-    (click)="addToFavorites(song)"
-    class="flex items-center justify-center">
-    <mat-icon
-      aria-hidden="true"
-      aria-label="favorite icon"
-      fontIcon="favorite_border"
-      class="text-xl"></mat-icon>
-  </button>
-  }
 </div>

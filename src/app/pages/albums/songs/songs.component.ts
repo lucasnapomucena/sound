@@ -18,6 +18,7 @@ import {
   selectArtistsSongs
 } from '@store/selectors';
 import { firstValueFrom, map, Observable, switchMap } from 'rxjs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-songs',
@@ -28,6 +29,7 @@ import { firstValueFrom, map, Observable, switchMap } from 'rxjs';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatTooltipModule,
     SongsListComponent
   ],
   templateUrl: './songs.component.html',
