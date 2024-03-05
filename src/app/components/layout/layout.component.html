@@ -1,8 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened> <app-sidebar> </app-sidebar></mat-sidenav>
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidebar (toggle)="sidenav.toggle()"> </app-sidebar
+  ></mat-sidenav>
   <mat-sidenav-content>
     <main>
-      <app-header></app-header>
+      <app-header
+        (toggle)="sidenav.toggle()"
+        [isSidenavOpened]="sidenav.opened"></app-header>
       <div class="px-4 py-4 relative">
         <ng-content></ng-content>
       </div>

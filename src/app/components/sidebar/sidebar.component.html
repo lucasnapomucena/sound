@@ -1,7 +1,14 @@
 <aside class="flex h-screen bg-gray-900 sticky top-0 z-50">
   <!-- Sidebar -->
+
   <div class="bg-white w-64 flex-shrink-0 shadow">
-    <div class="p-4 flex items-center justify-between">
+    <div class="p-4 flex items-center gap-2">
+      <button (click)="onToggle()" class="flex items-center">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="menu icon"
+          fontIcon="menu"></mat-icon>
+      </button>
       <div class="text-gray-900 text-2xl font-semibold">
         <a routerLink="/">Sound</a>
       </div>
