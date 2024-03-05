@@ -5,7 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectFavoritesTotal } from '@store/selectors';
+import { selectArtistsAlbum, selectFavoritesTotal } from '@store/selectors';
+import { AsyncPipe } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +20,13 @@ import { selectFavoritesTotal } from '@store/selectors';
     RouterModule,
     MatToolbarModule,
     MatBadgeModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -23,6 +34,7 @@ import { selectFavoritesTotal } from '@store/selectors';
 export class HeaderComponent {
   store = inject(Store);
   favoriteTotal$ = this.store.select(selectFavoritesTotal);
+  albums$ = this.store.select(selectArtistsAlbum);
   @Output() toggle = new EventEmitter<void>();
   @Input() isSidenavOpened!: boolean;
 
