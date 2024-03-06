@@ -31,6 +31,17 @@ export const selectArtistByAlbumId = (id: string) =>
     return undefined;
   });
 
+export const selectFilterAlbumName = (name: string) =>
+  createSelector(selectArtistsAlbum, (state) =>
+    state.filter((album) => {
+      if (name) {
+        return album.title.toLowerCase().includes(name.toLowerCase());
+      }
+
+      return album;
+    })
+  );
+
 export const selectFavoritesAlbum = createSelector(
   selectFavorites,
   (state) => state.album
