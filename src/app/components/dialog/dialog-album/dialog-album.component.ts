@@ -69,7 +69,7 @@ export class DialogAlbumComponent implements OnInit {
     id: [''],
     name: ['', [Validators.required]],
     title: ['', [Validators.required, Validators.minLength(3)]],
-    images: ['', [Validators.required, Validators.pattern('https?://.+')]],
+    images: ['', [Validators.required]],
     description: ['', [Validators.required, Validators.minLength(3)]],
     songs: this.fb.array([
       this.fb.group({

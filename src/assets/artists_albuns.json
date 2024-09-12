@@ -2,12 +2,12 @@
   {
     "id": "0c300cdb-6f9a-43f0-b4d8-932beccfd1a2",
     "name": "The Weeknd",
-    "image": "http://localhost:4200/assets/images/the-weeknd.png",
+    "image": "assets/images/the-weeknd.png",
     "albums": [
       {
         "id": "6fab6fc6-0396-4701-a61d-7bf6eff593c1",
         "title": "Dawn FM",
-        "images": "http://localhost:4200/assets/images/dawn-fm.png",
+        "images": "assets/images/dawn-fm.png",
         "songs": [
           {
             "id": "f1bf9231-5e0d-4732-ae74-47f883b47436",
@@ -97,12 +97,12 @@
   {
     "id": "19e84b85-2feb-4d51-810f-4b2bfb71e642",
     "name": "Radiohead",
-    "image": "http://localhost:4200/assets/images/radiohead.png",
+    "image": "/assets/images/radiohead.png",
     "albums": [
       {
         "id": "a8758015-e0ca-4a53-ba2c-d38379d0f7d0",
         "title": "The King of Limbs",
-        "images": "http://localhost:4200/assets/images/the-king-of-limbs.png",
+        "images": "/assets/images/the-king-of-limbs.png",
         "songs": [
           {
             "id": "4b557ef2-9003-4bb6-a924-8d39a308b5cd",
@@ -150,7 +150,7 @@
       {
         "id": "d31a2205-854f-4f65-add4-c7becbefa5a5",
         "title": "OK Computer",
-        "images": "http://localhost:4200/assets/images/ok-computer-radiohead.png",
+        "images": "/assets/images/ok-computer-radiohead.png",
         "songs": [
           {
             "id": "f47a70b3-1320-482a-bb4f-f341a7a705f3",
@@ -220,12 +220,12 @@
   {
     "id": "ce1a5cb7-13b4-4608-a7bc-ace90d5104b5",
     "name": "Portishead",
-    "image": "http://localhost:4200/assets/images/portishead.png",
+    "image": "/assets/images/portishead.png",
     "albums": [
       {
         "id": "1ed361d7-9ae9-4ff5-ac58-e1de53c35eea",
         "title": "Dummy",
-        "images": "http://localhost:4200/assets/images/portishead-dummy.png",
+        "images": "/assets/images/portishead-dummy.png",
         "songs": [
           {
             "id": "7a588267-5055-45c7-8095-0e5d28ad1728",
@@ -288,7 +288,7 @@
       {
         "id": "d5f14308-f8c3-4a07-a763-cc5193ea741e",
         "title": "Third",
-        "images": "http://localhost:4200/assets/images/third-portishead.png",
+        "images": "/assets/images/third-portishead.png",
         "songs": [
           {
             "id": "e2f92f5f-3501-4bbf-b4d5-4bfce810d8cb",
